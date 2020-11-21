@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" rel="script" src="script.js"></script>
+    </head>
+    <body>
+        <p>
+            <button id="reloadButton" onclick="reload();">内容更新</button>
+            <button id="initButton" onclick="showInit();">コーナー開始</button>
+            <button id="titleButton" onclick="showTitle();" disabled>タイトル表示</button>
+            <button id="topics0Button" onclick="showTopics0();" disabled>世界/日本記録更新表示</button>
+            <button id="detail0Button" onclick="showDetail0();" disabled>世界/日本記録更新ピックアップ表示</button>
+            <button id="topics1Button" onclick="showTopics1();" disabled>自己記録更新表示</button>
+            <button id="detail1Button" onclick="showDetail1();" disabled>自己記録更新表示ピックアップ表示</button>
+            <button id="endButton" onclick="showEnd();" disabled>コーナー終了</button>
+            <div class="wrapper">
+                <div>
+                    <div>ページ1</div>
+                    <br>
+                    <div>
+                        <span>走者1: </span><span id="topRunnerText0"></span><br>
+                        <span>タイトル: </span><span id="topGameTitleText0"></span><br>
+                        <span>カテゴリ: </span><span id="topCategoryText0"></span><br>
+                        <span>タイム: </span><span id="topRecordTimeText0"></span><br>
+                    </div>
+                    <br>
+                    <div>
+                        <span>走者2: </span><span id="topRunnerText1"></span><br>
+                        <span>タイトル: </span><span id="topGameTitleText1"></span><br>
+                        <span>カテゴリ: </span><span id="topCategoryText1"></span><br>
+                        <span>タイム: </span><span id="topRecordTimeText1"></span><br>
+                    </div>
+                    <br>
+                    <div>
+                        <span>走者3: </span><span id="topRunnerText2"></span><br>
+                        <span>タイトル: </span><span id="topGameTitleText2"></span><br>
+                        <span>カテゴリ: </span><span id="topCategoryText2"></span><br>
+                        <span>タイム: </span><span id="topRecordTimeText2"></span><br>
+                    </div>
+                    <br>
+                    <div>
+                        <span>走者4: </span><span id="topRunnerText3"></span><br>
+                        <span>タイトル: </span><span id="topGameTitleText3"></span><br>
+                        <span>カテゴリ: </span><span id="topCategoryText3"></span><br>
+                        <span>タイム: </span><span id="topRecordTimeText3"></span><br>
+                    </div>
+                    <br>
+                    <div>
+                        <span>日付:</span><span id="topRecordDateText"></span><br>
+                        <span>詳細:</span><br><span id="topDescriptionText"></span>
+                    </div>
+                </div>
+                <div>
+                    <div>ページ2</div>
+                    <br>
+                    <div>
+                        <span>走者1: </span><span id="pbRunnerText0"></span><br>
+                        <span>タイトル: </span><span id="pbGameTitleText0"></span><br>
+                        <span>カテゴリ: </span><span id="pbCategoryText0"></span><br>
+                        <span>タイム: </span><span id="pbRecordTimeText0"></span><br>
+                    </div>
+                    <br>
+                    <div>
+                        <span>走者2: </span><span id="pbRunnerText1"></span><br>
+                        <span>タイトル: </span><span id="pbGameTitleText1"></span><br>
+                        <span>カテゴリ: </span><span id="pbCategoryText1"></span><br>
+                        <span>タイム: </span><span id="pbRecordTimeText1"></span><br>
+                    </div>
+                    <br>
+                    <div>
+                        <span>走者3: </span><span id="pbRunnerText2"></span><br>
+                        <span>タイトル: </span><span id="pbGameTitleText2"></span><br>
+                        <span>カテゴリ: </span><span id="pbCategoryText2"></span><br>
+                        <span>タイム: </span><span id="pbRecordTimeText2"></span><br>
+                    </div>
+                    <br>
+                    <div>
+                        <span>走者4: </span><span id="pbRunnerText3"></span><br>
+                        <span>タイトル: </span><span id="pbGameTitleText3"></span><br>
+                        <span>カテゴリ: </span><span id="pbCategoryText3"></span><br>
+                        <span>タイム: </span><span id="pbRecordTimeText3"></span><br>
+                    </div>
+                    <br>
+                    <div>
+                        <span>日付:</span><span id="pbRecordDateText"></span><br>
+                        <span>詳細:</span><br><span id="pbDescriptionText"></span>
+                    </div>
+                </div>
+            </div>
+        </p>
+    </body>
+</html>

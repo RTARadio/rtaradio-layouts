@@ -1,0 +1,85 @@
+{
+    "name": "rtaradio_layouts",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": {
+        "name": "gunimus",
+        "email": "guminus@overspec.net"
+    },
+    "nodecg": {
+        "compatibleRange": "^1.0.0",
+        "dashboardPanels": [
+            {
+                "name": "event_info",
+                "title": "イベント",
+                "file": "event_info/index.html",
+                "fullbleed": true
+            },
+            {
+                "name": "record_news",
+                "title": "記録",
+                "file": "record_news/index.html",
+                "fullbleed": true
+            },
+            {
+                "name": "rta_gamers",
+                "title": "ゲーマーズ",
+                "file": "rta_gamers/index.html",
+                "fullbleed": true
+            },
+            {
+                "name": "rta_racing",
+                "title": "レーシング",
+                "file": "rta_racing/index.html",
+                "fullbleed": true
+            },
+            {
+                "name": "rta_shocking",
+                "title": "ショッキング",
+                "file": "rta_shocking/index.html",
+                "fullbleed": true
+            },
+            {
+                "name": "tweets",
+                "title": "ツイート",
+                "file": "tweet/index.html",
+                "fullbleed": true
+            }
+        ],
+        "graphics": [
+            {
+                "file": "rta_radio.html",
+                "width": 1920,
+                "height": 1080
+            }
+        ],
+        "assetCategories": [
+            {
+                "name": "rta_gamers",
+                "title": "RTAGamers出張版",
+                "allowedTypes": [
+                    "jpg",
+                    "jpeg",
+                    "gif",
+                    "png"
+                ]
+            },
+            {
+                "name": "materials",
+                "title": "レイアウト用素材",
+                "allowedTypes": [
+                    "png"
+                ]
+            }
+        ]
+    },
+    "dependencies": {
+        "node-fetch": "^2.6.1",
+        "animejs": "^3.2.1",
+        "twit": "^2.2.11"
+    }
+}
