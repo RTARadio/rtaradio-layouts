@@ -5,9 +5,17 @@ body {
     font-family: 'Noto Sans JP', sans-serif;
 }
 
+.titleHeader {
+    font-size: 64px;
+}
+
 .titleBody {
     font-size: 128px;
     font-style: italic;
+}
+
+.titleFooter {
+    font-size: 96px;
 }
 
 .left {
@@ -16,4 +24,8 @@ body {
 
 .right {
     float: right;
+}
+
+.center {
+    text-align: center;
 }

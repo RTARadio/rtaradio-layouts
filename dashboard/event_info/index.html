@@ -2,20 +2,78 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" rel="script" src="script.js"></script>
     </head>
     <body>
         <p>
             <button id="reloadButton" onclick="reload();">内容更新</button>
-            <button id="titleButton" onclick="showTitle();">タイトル表示</button>
-            <button id="topicsButton" onclick="showTopics();" disabled>トピックス表示</button>
-            <button id="detailButton" onclick="showDetail();" disabled>詳細表示</button>
-            <div><span>トピック1:</span><span id="topicText1"></span></div>
-            <div><span>トピック2:</span><span id="topicText2"></span></div>
-            <div><span>トピック3:</span><span id="topicText3"></span></div>
-            <div><span>トピック4:</span><span id="topicText4"></span></div>
+            <button id="initButton" onclick="showInit();">コーナー開始</button>
+            <button id="titleButton" onclick="showTitle();" disabled>タイトル表示</button>
+            <button id="listButton" onclick="showList();" disabled>開催予定のイベント一覧表示</button>
+            <button id="topicsButton" onclick="showTopics();" disabled>ピックアップイベント一覧表示</button>
             <br>
-            <div><span>タイトル:</span><span id="titleText"></span></div>
-            <div><span>詳細:</span><span id="detailText"></span></div>
+            <button id="detail0Button" onclick="showDetail(0);" disabled>ピックアップ1</button>
+            <button id="close0Button" onclick="closeDetail(0);" disabled>ピックアップ1閉じる</button>
+            <button id="detail1Button" onclick="showDetail(1);" disabled>ピックアップ2</button>
+            <button id="close1Button" onclick="closeDetail(1);" disabled>ピックアップ2閉じる</button>
+            <button id="detail2Button" onclick="showDetail(2);" disabled>ピックアップ3</button>
+            <button id="close2Button" onclick="closeDetail(2);" disabled>ピックアップ3閉じる</button>
+            <button id="detail3Button" onclick="showDetail(3);" disabled>ピックアップ4</button>
+            <button id="close3Button" onclick="closeDetail(3);" disabled>ピックアップ4閉じる</button>
+            <button id="endButton" onclick="showEnd();" disabled>コーナー終了</button>
+            <div class="wrapper">
+                <div>
+                    <div>ピックアップイベント</div>
+                    <br>
+                    <div>
+                        <span>タイトル: </span><span id="eventPickupTitleText0"></span><br>
+                        <span>日付: </span><span id="eventPickupDateText0"></span><br>
+                        <span>詳細: </span><span id="eventPickupDetailText0"></span><br>
+                    </div>
+                    <br>
+                    <div>
+                        <span>タイトル: </span><span id="eventPickupTitleText1"></span><br>
+                        <span>日付: </span><span id="eventPickupDateText1"></span><br>
+                        <span>詳細: </span><span id="eventPickupDetailText1"></span><br>
+                    </div>
+                    <br>
+                    <div>
+                        <span>タイトル: </span><span id="eventPickupTitleText2"></span><br>
+                        <span>日付: </span><span id="eventPickupDateText2"></span><br>
+                        <span>詳細: </span><span id="eventPickupDetailText2"></span><br>
+                    </div>
+                    <br>
+                    <div>
+                        <span>タイトル: </span><span id="eventPickupTitleText3"></span><br>
+                        <span>日付: </span><span id="eventPickupDateText3"></span><br>
+                        <span>詳細: </span><span id="eventPickupDetailText3"></span><br>
+                    </div>
+                </div>
+                <div>
+                    <div>開催予定のイベント</div>
+                    <br>
+                    <div>
+                        <span>タイトル: </span><span id="eventFutureTitleText0"></span><br>
+                        <span>日付: </span><span id="eventFutureDateText0"></span><br>
+                    </div>
+                    <br>
+                    <div>
+                        <span>タイトル: </span><span id="eventFutureTitleText1"></span><br>
+                        <span>日付: </span><span id="eventFutureDateText1"></span><br>
+                    </div>
+                    <br>
+                    <div>
+                        <span>タイトル: </span><span id="eventFutureTitleText2"></span><br>
+                        <span>日付: </span><span id="eventFutureDateText2"></span><br>
+                    </div>
+                    <br>
+                    <div>
+                        <span>タイトル: </span><span id="eventFutureTitleText3"></span><br>
+                        <span>日付: </span><span id="eventFutureDateText3"></span><br>
+                    </div>
+                </div>
+            </div>
         </p>
     </body>
 </html>

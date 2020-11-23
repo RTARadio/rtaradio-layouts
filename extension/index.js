@@ -17,4 +17,6 @@ async function init() {
     require('./rta_gamers');
     require('./pb_record');
     require('./top_record');
+    require('./event_future');
+    require('./event_pickup');
 }
