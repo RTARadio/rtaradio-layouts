@@ -49,7 +49,8 @@ function init() {
 }
 
 function reload() {
-    nodecg.sendMessage('reload_' + currentFile);
+    nodecg.sendMessage('reload_pb_record');
+    nodecg.sendMessage('reload_top_record');
 }
 
 function showInit() {

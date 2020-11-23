@@ -20,4 +20,4 @@ function requestReload() {
         });
 }
 
-nodecg.listenFor('reload_rta_gamers', requestReload);
+nodecg.listenFor('reload_' + currentFile, requestReload);
