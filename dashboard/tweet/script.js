@@ -18,7 +18,7 @@ tweetsRep.on("change", newValue => {
             + '<div>'+ value.text + '</div>'
             + '<button onclick="showTweet(' + index + ');">ツイート表示</button>'
             + '<button onclick="deleteTweet(' + index +');">ツイート削除</button>'
-            + '<hr style="border:1px dashed #000000;"></hr>'
+            + '<hr class="border">'
             + '</div>';
         }
     });

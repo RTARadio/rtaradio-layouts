@@ -21,14 +21,14 @@ nodecg.Replicant("data_pb_record").on("change", newValue => {
 // アニメーション初期化
 let recordTitleAnimation;
 let recordTitleAnimationRev;
-let recordTopics0Animation;
-let recordTopics0AnimationRev;
-let recordDetail0Animation;
-let recordDetail0AnimationRev;
-let recordTopics1Animation;
-let recordTopics1AnimationRev;
-let recordDetail1Animation;
-let recordDetail1AnimationRev;
+let recordTopicsTopAnimation;
+let recordTopicsTopAnimationRev;
+let recordDetailTopAnimation;
+let recordDetailTopAnimationRev;
+let recordTopicsPbAnimation;
+let recordTopicsPbAnimationRev;
+let recordDetailPbAnimation;
+let recordDetailPbAnimationRev;
 let recordEndAnimation;
 let recordAnimationEasing = 'easeOutBack';
 let recordAnimationEasingRev = 'easeOutBack';
@@ -39,18 +39,13 @@ function init() {
 
     // 他コーナーの非表示
     gamersTitle.style.visibility = "hidden";
-
-    // 初期化
     recordTitle.style.visibility = "hidden";
-    recordTopTopics.style.visibility = "hidden";
-    recordTopDetail.style.visibility = "hidden";
-    recordPbTopics.style.visibility = "hidden";
-    recordPbDetail.style.visibility = "hidden";
+    eventTitle.style.visibility = "hidden";
 
     // タイトル書き換え
-    recordTitle.innerHTML = '<span></span><br>'
+    recordTitle.innerHTML = '<span class="titleHeader"></span><br>'
     + '<span class="titleBody">今週の記録更新</span><br>'
-    + '<span></span>';
+    + '<span class="titleFooter"></span>';
 
     // 日本/世界記録更新書き換え
     recordTopTopics.innerHTML = '<div class="recordTopicsTitle el">日本/世界記録更新</div>';
@@ -117,7 +112,7 @@ function init() {
         duration: 1000
     });
 
-    recordTopics0Animation = anime({
+    recordTopicsTopAnimation = anime({
         targets: '#recordTopTopics .el',
         translateX: 1300,
         easing: recordAnimationEasing,
@@ -125,7 +120,7 @@ function init() {
         delay: anime.stagger(100, {start: 1500})
     });
     
-    recordTopics0AnimationRev = anime({
+    recordTopicsTopAnimationRev = anime({
         targets: '#recordTopTopics .el',
         translateX: 1300,
         easing: recordAnimationEasingRev,
@@ -135,7 +130,7 @@ function init() {
         endDelay: 1000
     });
     
-    recordDetail0Animation = anime({
+    recordDetailTopAnimation = anime({
         targets: '#recordTopDetail',
         translateX: 1300,
         easing: recordAnimationEasing,
@@ -143,7 +138,7 @@ function init() {
         delay: 2500
     });
 
-    recordDetail0AnimationRev = anime({
+    recordDetailTopAnimationRev = anime({
         targets: '#recordTopDetail',
         translateX: 1300,
         easing: recordAnimationEasingRev,
@@ -151,7 +146,7 @@ function init() {
         duration: 1000
     });
 
-    recordTopics1Animation = anime({
+    recordTopicsPbAnimation = anime({
         targets: '#recordPbTopics .el',
         translateX: 1300,
         easing: recordAnimationEasing,
@@ -159,7 +154,7 @@ function init() {
         delay: anime.stagger(100, {start: 1500})
     });
     
-    recordTopics1AnimationRev = anime({
+    recordTopicsPbAnimationRev = anime({
         targets: '#recordPbTopics .el',
         translateX: 1300,
         easing: recordAnimationEasingRev,
@@ -169,7 +164,7 @@ function init() {
         endDelay: 1000
     });
     
-    recordDetail1Animation = anime({
+    recordDetailPbAnimation = anime({
         targets: '#recordPbDetail',
         translateX: 1300,
         easing: recordAnimationEasing,
@@ -177,7 +172,7 @@ function init() {
         delay: 2500
     });
 
-    recordDetail1AnimationRev = anime({
+    recordDetailPbAnimationRev = anime({
         targets: '#recordPbDetail',
         translateX: 1300,
         easing: recordAnimationEasingRev,
@@ -191,57 +186,57 @@ function showTitle() {
     recordTitleAnimation.restart();
 }
 
-function showTopics0() {
+function showTopicsTop() {
     for(let i in topRecordData) {
         document.getElementById('topRecordText' + i).style.backgroundColor = "black";
     }
     recordTitleAnimationRev.restart();
     recordTopTopics.style.visibility = "visible";
-    recordTopics0Animation.restart();
+    recordTopicsTopAnimation.restart();
 
 }
 
 
-function showDetail0() {
+function showDetailTop() {
     for(let i in topRecordData) {
         if (topRecordData[i].date != "") {
             document.getElementById('topRecordText' + i).style.backgroundColor = "blue";
         }
     }
-    recordTopics0AnimationRev.restart();
+    recordTopicsTopAnimationRev.restart();
     recordTopDetail.style.visibility = "visible";
-    recordDetail0Animation.restart();
+    recordDetailTopAnimation.restart();
 }
 
-function showTopics1() {
+function showTopicsPb() {
     for(let i in pbRecordData) {
         document.getElementById('pbRecordText' + i).style.backgroundColor = "black";
     }
-    recordDetail0AnimationRev.restart();
+    recordDetailTopAnimationRev.restart();
     recordPbTopics.style.visibility = "visible";
-    recordTopics1Animation.restart();
+    recordTopicsPbAnimation.restart();
 }
 
-function showDetail1() {
+function showDetailPb() {
     for(let i in pbRecordData) {
         if (pbRecordData[i].date != "") {
             document.getElementById('pbRecordText' + i).style.backgroundColor = "blue";
         }
     }
-    recordTopics1AnimationRev.restart();
+    recordTopicsPbAnimationRev.restart();
     recordPbDetail.style.visibility = "visible";
-    recordDetail1Animation.restart();
+    recordDetailPbAnimation.restart();
 }
 
 function showEnd() {
-    recordDetail1AnimationRev.restart();
+    recordDetailPbAnimationRev.restart();
     recordTitleAnimation.restart();
 }
 
 nodecg.listenFor('change_record_news', init);
 nodecg.listenFor('title_record_news', showTitle);
-nodecg.listenFor('topics0_record_news', showTopics0);
-nodecg.listenFor('detail0_record_news', showDetail0);
-nodecg.listenFor('topics1_record_news', showTopics1);
-nodecg.listenFor('detail1_record_news', showDetail1);
+nodecg.listenFor('topics_top_record_news', showTopicsTop);
+nodecg.listenFor('detail_top_record_news', showDetailTop);
+nodecg.listenFor('topics_pb_record_news', showTopicsPb);
+nodecg.listenFor('detail_pb_record_news', showDetailPb);
 nodecg.listenFor('end_record_news', showEnd);

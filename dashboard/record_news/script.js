@@ -6,10 +6,10 @@ window.onload = function () {
     const reloadButton = document.getElementById('reloadButton');
     const initButton = document.getElementById('initButton');
     const titleButton = document.getElementById('titleButton');
-    const topics0Button = document.getElementById('topics0Button');
-    const detail0Button = document.getElementById('detail0Button');
-    const topics1Button = document.getElementById('topics1Button');
-    const detail1Button = document.getElementById('detail1Button');
+    const topicsTopButton = document.getElementById('topicsTopButton');
+    const detailTopButton = document.getElementById('detailTopButton');
+    const topicsPbButton = document.getElementById('topicsPbButton');
+    const detailPbButton = document.getElementById('detailPbButton');
     const endButton = document.getElementById('endButton');
     init();
 }
@@ -61,32 +61,32 @@ function showInit() {
 
 function showTitle() {
     titleButton.disabled = true;
-    topics0Button.disabled = false;
+    topicsTopButton.disabled = false;
     nodecg.sendMessage('title_' + currentFile);
 }
 
-function showTopics0() {
-    topics0Button.disabled = true;
-    detail0Button.disabled = false;
-    nodecg.sendMessage('topics0_' + currentFile);
+function showTopicsTop() {
+    topicsTopButton.disabled = true;
+    detailTopButton.disabled = false;
+    nodecg.sendMessage('topics_top_' + currentFile);
 }
 
-function showDetail0() {
-    detail0Button.disabled = true;
-    topics1Button.disabled = false;
-    nodecg.sendMessage('detail0_' + currentFile);
+function showDetailTop() {
+    detailTopButton.disabled = true;
+    topicsPbButton.disabled = false;
+    nodecg.sendMessage('detail_top_' + currentFile);
 }
 
-function showTopics1() {
-    topics1Button.disabled = true;
-    detail1Button.disabled = false;
-    nodecg.sendMessage('topics1_' + currentFile);
+function showTopicsPb() {
+    topicsPbButton.disabled = true;
+    detailPbButton.disabled = false;
+    nodecg.sendMessage('topics_pb_' + currentFile);
 }
 
-function showDetail1() {
-    detail1Button.disabled = true;
+function showDetailPb() {
+    detailPbButton.disabled = true;
     endButton.disabled = false;
-    nodecg.sendMessage('detail1_' + currentFile);
+    nodecg.sendMessage('detail_pb_' + currentFile);
 }
 
 function showEnd() {

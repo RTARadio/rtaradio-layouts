@@ -29,3 +29,7 @@ body {
 .center {
     text-align: center;
 }
+
+.border {
+    border:1px dashed #000000;
+}

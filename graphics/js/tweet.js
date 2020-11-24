@@ -4,7 +4,7 @@ function showTweet() {
     nodecg.readReplicant('showTweet', value => {
         document.getElementById("tweet").innerHTML = '<div class="tweetBox">'
         + '<img id="userImage"><span id="tweetName"></span>'
-        + '<hr style="border:1px dashed #000000;">'
+        + '<hr class="border">'
         + '<span id="tweetText"></span>'
         + '</div>';
         document.getElementById("userImage").src = value.user.profileImageUrl;

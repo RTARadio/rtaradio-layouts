@@ -23,10 +23,10 @@ nodecg.Replicant('assets:' + currentFile).on("change", newValue => {
 
 // アニメーション初期化
 let gamersTitleAnimation;
-let gamersTopicsAnimation;
-let gamersDetailAnimation;
 let gamersTitleAnimationRev;
+let gamersTopicsAnimation;
 let gamersTopicsAnimationRev;
+let gamersDetailAnimation;
 let gamersDetailAnimationRev;
 let gamersAnimationEasing = 'easeOutBack';
 let gamersAnimationEasingRev = 'easeOutBack';
@@ -36,12 +36,9 @@ function init() {
     document.body.style.backgroundImage = "url(" + "rta_gamers.png" + ")";
 
     // 他コーナーの非表示
-    recordTitle.style.visibility = "hidden";
-
-    // 初期化
     gamersTitle.style.visibility = "hidden";
-    gamersTopics.style.visibility = "hidden";
-    gamersDetail.style.visibility = "hidden";
+    recordTitle.style.visibility = "hidden";
+    eventTitle.style.visibility = "hidden";
 
     // タイトル書き換え
     gamersTitle.innerHTML = '<span class="gamersTitleHeader">RTA情報ブログ</span><br>'

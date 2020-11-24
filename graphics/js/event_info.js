@@ -27,7 +27,6 @@ let eventTopicsAnimation;
 let eventTopicsAnimationRev;
 const eventDetailAnimation = {};
 const eventDetailAnimationRev = {};
-let eventEndAnimation;
 let eventAnimationEasing = 'easeOutBack';
 let eventAnimationEasingRev = 'easeOutBack';
 
@@ -37,6 +36,8 @@ function init() {
 
     // 他コーナーの非表示
     gamersTitle.style.visibility = "hidden";
+    recordTitle.style.visibility = "hidden";
+    eventTitle.style.visibility = "hidden";
 
     // タイトル書き換え
     eventTitle.innerHTML = '<span class="titleHeader">RTA</span><br>'
