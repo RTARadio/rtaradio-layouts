@@ -7,7 +7,6 @@ window.onload = function () {
 let tweets;
 
 const tweetsRep = nodecg.Replicant('tweets');
-const showTweetRep = nodecg.Replicant('showTweet');
 tweetsRep.on("change", newValue => {
     tweets = newValue;
     let tweetsList = '';
@@ -18,6 +17,7 @@ tweetsRep.on("change", newValue => {
             + '<div>'+ value.text + '</div>'
             + '<button onclick="showTweet(' + index + ');">ツイート表示</button>'
             + '<button onclick="deleteTweet(' + index +');">ツイート削除</button>'
+            + '<button onclick="addTweet(' + index +');">おたよりに追加</button>'
             + '<hr class="border">'
             + '</div>';
         }
@@ -26,7 +26,7 @@ tweetsRep.on("change", newValue => {
 });
 
 function showTweet(index) {
-    showTweetRep.value = tweets[index];
+    nodecg.Replicant('showTweet').value = tweets[index];
     nodecg.sendMessage("showTweet");
     deleteTweet(index);
 }
@@ -34,4 +34,9 @@ function showTweet(index) {
 function deleteTweet(index) {
     tweets.splice(index, 1);
     tweetsRep.value = tweets;
+}
+
+function addTweet(index) {
+    nodecg.sendMessage("addPostTweet", tweets[index]);
+    deleteTweet(index);
 }

@@ -13,6 +13,9 @@ const client = new Twit({
 
 const MAX_TWEETS = 100;
 const tweetsRep = nodecg.Replicant('tweets');
+const postTweetRep = nodecg.Replicant('postTweet');
+const pickupTweetRep = nodecg.Replicant('pickupTweet');
+
 function addTweet(newTweet) {
     if (tweetsRep.value) {
         tweetsRep.value = [
@@ -21,6 +24,28 @@ function addTweet(newTweet) {
         ];
     } else {
         tweetsRep.value = [newTweet];
+    }
+}
+
+function addPostTweet(newTweet) {
+    if (postTweetRep.value) {
+        postTweetRep.value = [
+            newTweet,
+            ...postTweetRep.value.slice(0, MAX_TWEETS - 1),
+        ];
+    } else {
+        postTweetRep.value = [newTweet];
+    }
+}
+
+function addPickupTweet(newTweet) {
+    if (pickupTweetRep.value) {
+        pickupTweetRep.value = [
+            newTweet,
+            ...pickupTweetRep.value.slice(0, MAX_TWEETS - 1),
+        ];
+    } else {
+        pickupTweetRep.value = [newTweet];
     }
 }
 
@@ -52,3 +77,6 @@ function main() {
 };
 
 main();
+
+nodecg.listenFor('addPostTweet', (newValue) => { addPostTweet(newValue) });
+nodecg.listenFor('addPickupTweet', (newValue) => { addPickupTweet(newValue) });

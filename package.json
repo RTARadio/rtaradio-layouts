@@ -44,7 +44,13 @@
                 "fullbleed": true
             },
             {
-                "name": "tweets",
+                "name": "postTweet",
+                "title": "おたより",
+                "file": "postTweet/index.html",
+                "fullbleed": true
+            },
+            {
+                "name": "tweet",
                 "title": "ツイート",
                 "file": "tweet/index.html",
                 "fullbleed": true
