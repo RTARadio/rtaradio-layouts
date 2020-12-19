@@ -8,6 +8,9 @@ let tweets;
 
 const tweetsRep = nodecg.Replicant('tweets');
 tweetsRep.on("change", newValue => {
+    if (newValue == undefined) {
+        return;
+    }
     tweets = newValue;
     let tweetsList = '';
     tweets.forEach(function(value, index) {

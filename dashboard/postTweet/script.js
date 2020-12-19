@@ -12,6 +12,9 @@ let pickupTweetData;
 
 const postTweetRep = nodecg.Replicant('postTweet');
 postTweetRep.on("change", newValue => {
+    if (newValue == undefined) {
+        return;
+    }
     postTweetData = newValue;
     let tweetsList = '';
     postTweetData.forEach(function(value, index) {
@@ -34,6 +37,9 @@ postTweetRep.on("change", newValue => {
 
 const pickupTweetRep = nodecg.Replicant('pickupTweet');
 pickupTweetRep.on("change", newValue => {
+    if (newValue == undefined) {
+        return;
+    }
     pickupTweetData = newValue;
     let tweetsList = '';
     pickupTweetData.forEach(function(value, index) {
@@ -67,12 +73,6 @@ function movePickupTweet(index) {
 function deletePostTweet(index) {
     postTweetData.splice(index, 1);
     postTweetRep.value = postTweetData;
-}
-
-function showInit() {
-    initButton.disabled = true;
-    titleButton.disabled = false;
-    nodecg.sendMessage(currentFile + 'Change');
 }
 
 function showTitle() {

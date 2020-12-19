@@ -14,33 +14,33 @@
         "compatibleRange": "^1.0.0",
         "dashboardPanels": [
             {
-                "name": "event_info",
+                "name": "eventInfo",
                 "title": "イベント",
-                "file": "event_info/index.html",
+                "file": "eventInfo/index.html",
                 "fullbleed": true
             },
             {
-                "name": "record_news",
+                "name": "recordNews",
                 "title": "記録",
-                "file": "record_news/index.html",
+                "file": "recordNews/index.html",
                 "fullbleed": true
             },
             {
-                "name": "rta_gamers",
+                "name": "rtaGamers",
                 "title": "ゲーマーズ",
-                "file": "rta_gamers/index.html",
+                "file": "rtaGamers/index.html",
                 "fullbleed": true
             },
             {
-                "name": "rta_racing",
+                "name": "rtaRacing",
                 "title": "レーシング",
-                "file": "rta_racing/index.html",
+                "file": "rtaRacing/index.html",
                 "fullbleed": true
             },
             {
-                "name": "rta_shocking",
+                "name": "rtaShocking",
                 "title": "ショッキング",
-                "file": "rta_shocking/index.html",
+                "file": "rtaShocking/index.html",
                 "fullbleed": true
             },
             {
@@ -58,14 +58,29 @@
         ],
         "graphics": [
             {
-                "file": "rta_radio.html",
+                "file": "eventInfo.html",
+                "width": 1920,
+                "height": 1080
+            },
+            {
+                "file": "recordNews.html",
+                "width": 1920,
+                "height": 1080
+            },
+            {
+                "file": "rtaGamers.html",
+                "width": 1920,
+                "height": 1080
+            },
+            {
+                "file": "postTweet.html",
                 "width": 1920,
                 "height": 1080
             }
         ],
         "assetCategories": [
             {
-                "name": "rta_gamers",
+                "name": "rtaGamers",
                 "title": "RTAGamers出張版",
                 "allowedTypes": [
                     "jpg",
