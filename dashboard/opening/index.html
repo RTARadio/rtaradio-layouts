@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" rel="script" src="script.js"></script>
+    </head>
+    <body>
+        <button id="openingPreButton" onclick="openingPre();">21:00 START</button>
+        <button id="openingJustButton" onclick="openingJust();" disabled>まもなく開始します</button>
+        <button id="openingStartButton" onclick="openingStart();" disabled>放送開始</button>
+        <br>
+        <button id="openingDescriptionButton" onclick="openingDescription();" disabled>あるらじとは</button>
+        <button id="openingAnnouncementButton" onclick="openingAnnouncement();" disabled>お知らせ</button>
+        <button id="openingRecruitButton" onclick="openingRecruit();" disabled>CM募集</button>
+        <br>
+        <button id="postTweetTitleButton" onclick="postTweetTitle();" disabled>ツイッターおたより表示</button>
+        <button id="postTweetThemeButton" onclick="postTweetTheme();" disabled>お題表示</button>
+        <button id="postTweetBody0Button" onclick="postTweetBody(0);" disabled>ツイート1表示</button>
+        <button id="postTweetBody1Button" onclick="postTweetBody(1);" disabled>ツイート2表示</button>
+        <button id="postTweetBody2Button" onclick="postTweetBody(2);" disabled>ツイート3表示</button>
+        <button id="postTweetBody3Button" onclick="postTweetBody(3);" disabled>ツイート4表示</button>
+        <br>
+        <button id="postTweetRecruitButton" onclick="postTweetRecruit();" disabled>おたより募集</button>
+        <button id="openingTitleButton" onclick="openingTitle();" disabled>タイトル表示</button>
+        <br>
+        <hr class="border">
+        <div class="wrapper">
+            <div>
+                <div>おたより一覧</div>
+                <hr class="border">
+                <div id="postTweet"></div>
+            </div>
+            <div>
+                <div>放送表示一覧</div>
+                <hr class="border">
+                <div id="pickupTweet"></div>
+            </div>
+        </div>
+    </body>
+</html>

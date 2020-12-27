@@ -88,6 +88,7 @@ window.onload = function () {
             endDelay: 500
         });
     });
+    
     nodecg.Replicant("data_event_future").on("change", newValue => {
         if (newValue == undefined) {
             return;

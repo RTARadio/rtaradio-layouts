@@ -33,3 +33,12 @@ body {
 .border {
     border:1px dashed #000000;
 }
+
+.backgroundColor {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    height: 980px;
+    width: 1820px;
+    background-color: rgba(255, 255, 255, 0.65);
+}

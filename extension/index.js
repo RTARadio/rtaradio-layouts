@@ -13,6 +13,7 @@ module.exports = nodecg => {
 };
 
 async function init() {
+    require('./parameter');
     require('./twitter');
     require('./rta_gamers');
     require('./pb_record');

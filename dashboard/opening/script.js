@@ -1,10 +1,13 @@
 'use strict';
 
 let currentFile = 'postTweet';
+const bodyButton = {};
 
 window.onload = function () {
-    const postTweet = document.getElementById("postTweet");
-    const pickupTweet = document.getElementById("pickupTweet");
+    bodyButton[0] = document.getElementById("postTweetBody0Button");
+    bodyButton[1] = document.getElementById("postTweetBody1Button");
+    bodyButton[2] = document.getElementById("postTweetBody2Button");
+    bodyButton[3] = document.getElementById("postTweetBody3Button");
 }
 
 let postTweetData;
@@ -75,8 +78,74 @@ function deletePostTweet(index) {
     postTweetRep.value = postTweetData;
 }
 
-function showTitle() {
-    titleButton.disabled = true;
-    topicsTopButton.disabled = false;
-    nodecg.sendMessage(currentFile + 'Title');
+function openingPre() {
+    openingPreButton.disabled = true;
+    openingJustButton.disabled = false;
+    nodecg.sendMessage('openingPre');
+}
+
+function openingJust() {
+    openingJustButton.disabled = true;
+    openingStartButton.disabled = false;
+    nodecg.sendMessage('openingJust');
+}
+
+function openingStart() {
+    openingStartButton.disabled = true;
+    openingDescriptionButton.disabled = false;
+    nodecg.sendMessage('openingStart');
+}
+
+function openingDescription() {
+    openingDescriptionButton.disabled = true;
+    openingAnnouncementButton.disabled = false;
+    nodecg.sendMessage('openingDescription');
+}
+
+function openingAnnouncement() {
+    openingAnnouncementButton.disabled = true;
+    openingRecruitButton.disabled = false;
+    nodecg.sendMessage('openingAnnouncement');
+}
+
+function openingRecruit() {
+    openingRecruitButton.disabled = true;
+    postTweetTitleButton.disabled = false;
+    nodecg.sendMessage('openingRecruit');
+}
+
+function postTweetTitle() {
+    postTweetTitleButton.disabled = true;
+    postTweetThemeButton.disabled = false;
+    nodecg.sendMessage('openingRecruitDisable');
+    nodecg.sendMessage('postTweetTitle');
+}
+
+function postTweetTheme() {
+    postTweetThemeButton.disabled = true;
+    bodyButton[0].disabled = false;
+    nodecg.sendMessage('postTweetTheme');
+}
+
+function postTweetBody(num) {
+    bodyButton[num].disabled = true;
+    if (num + 1 < 4) {
+        bodyButton[num + 1].disabled = false;
+    } else {
+        postTweetRecruitButton.disabled = false;
+    }
+    nodecg.sendMessage('postTweetBody', num);
+}
+
+function postTweetRecruit() {
+    postTweetRecruitButton.disabled = true;
+    openingTitleButton.disabled = false;
+    nodecg.sendMessage('postTweetRecruit');
+}
+
+function openingTitle() {
+    openingTitleButton.disabled = true;
+    openingPreButton.disabled = false;
+    nodecg.sendMessage('postTweetRecruitDisable');
+    nodecg.sendMessage('openingTitle')
 }

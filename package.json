@@ -14,66 +14,66 @@
         "compatibleRange": "^1.0.0",
         "dashboardPanels": [
             {
-                "name": "eventInfo",
-                "title": "イベント",
-                "file": "eventInfo/index.html",
-                "fullbleed": true
-            },
-            {
-                "name": "recordNews",
-                "title": "記録",
-                "file": "recordNews/index.html",
-                "fullbleed": true
-            },
-            {
-                "name": "rtaGamers",
-                "title": "ゲーマーズ",
-                "file": "rtaGamers/index.html",
-                "fullbleed": true
-            },
-            {
-                "name": "rtaRacing",
-                "title": "レーシング",
-                "file": "rtaRacing/index.html",
+                "name": "opening",
+                "title": "01_オープニング",
+                "file": "opening/index.html",
                 "fullbleed": true
             },
             {
                 "name": "rtaShocking",
-                "title": "ショッキング",
+                "title": "02_ショッキング",
                 "file": "rtaShocking/index.html",
                 "fullbleed": true
             },
             {
-                "name": "postTweet",
-                "title": "おたより",
-                "file": "postTweet/index.html",
+                "name": "rtaGamers",
+                "title": "03_RTAGamers",
+                "file": "rtaGamers/index.html",
+                "fullbleed": true
+            },
+            {
+                "name": "recordNews",
+                "title": "04_記録更新",
+                "file": "recordNews/index.html",
+                "fullbleed": true
+            },
+            {
+                "name": "eventInfo",
+                "title": "05_イベント",
+                "file": "eventInfo/index.html",
+                "fullbleed": true
+            },
+            {
+                "name": "rtaRacing",
+                "title": "06_レーシング",
+                "file": "rtaRacing/index.html",
                 "fullbleed": true
             },
             {
                 "name": "tweet",
-                "title": "ツイート",
+                "title": "08_ツイート",
                 "file": "tweet/index.html",
                 "fullbleed": true
             }
         ],
         "graphics": [
             {
-                "file": "eventInfo.html",
+                "file": "01_opening.html",
                 "width": 1920,
                 "height": 1080
             },
             {
-                "file": "recordNews.html",
+                "file": "03_rtaGamers.html",
                 "width": 1920,
                 "height": 1080
             },
             {
-                "file": "rtaGamers.html",
+                "file": "04_recordNews.html",
                 "width": 1920,
                 "height": 1080
             },
             {
-                "file": "postTweet.html",
+                "file": "05_eventInfo.html",
                 "width": 1920,
                 "height": 1080
             }
