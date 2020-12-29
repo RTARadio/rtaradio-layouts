@@ -63,6 +63,11 @@
                 "height": 1080
             },
             {
+                "file": "02_rtaShocking.html",
+                "width": 1920,
+                "height": 1080
+            },
+            {
                 "file": "03_rtaGamers.html",
                 "width": 1920,
                 "height": 1080
@@ -81,11 +86,10 @@
         "assetCategories": [
             {
                 "name": "rtaGamers",
-                "title": "RTAGamers出張版",
+                "title": "RTAGamersピックアップ画像",
                 "allowedTypes": [
                     "jpg",
                     "jpeg",
-                    "gif",
                     "png"
                 ]
             },
