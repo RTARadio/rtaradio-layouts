@@ -2,20 +2,23 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <!-- <script type="text/javascript" rel="script" src="script.js"></script> -->
     </head>
     <body>
         <p>
-            <button id="reloadButton" onclick="reload();">内容更新</button>
-            <button id="titleButton" onclick="showTitle();">タイトル表示</button>
-            <button id="topicsButton" onclick="showTopics();" disabled>トピックス表示</button>
-            <button id="detailButton" onclick="showDetail();" disabled>詳細表示</button>
-            <div><span>トピック1:</span><span id="topicText1"></span></div>
-            <div><span>トピック2:</span><span id="topicText2"></span></div>
-            <div><span>トピック3:</span><span id="topicText3"></span></div>
-            <div><span>トピック4:</span><span id="topicText4"></span></div>
+            <button id="shockingGuestButton" onclick="shockingGuest();">本日のゲスト</button>
+            <button id="shockingProfileButton" onclick="shockingProfile();">プロフィール</button>
+            <button id="shockingLetterButton" onclick="shockingLetter();">おたよりレイアウト</button>
+            <button id="shockingLetterNextButton" onclick="shockingLetterNext();">おたより前半</button>
+            <button id="shockingLetterNextButton" onclick="shockingLetterNext();">おたより後半</button>
+            <button id="shockingTitleButton" onclick="shockingTitle();">タイトル表示</button>
             <br>
-            <div><span>タイトル:</span><span id="titleText"></span></div>
-            <div><span>詳細:</span><span id="detailText"></span></div>
+            <hr class="border">
+            <div>
+                <div>おたより一覧</div>
+                <div id="rtaShocking"></div>
+            </div> 
         </p>
     </body>
 </html>
