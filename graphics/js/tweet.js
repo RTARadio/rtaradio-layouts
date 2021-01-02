@@ -1,6 +1,9 @@
 'use strict';
 
 nodecg.Replicant('showTweet').on("change", newValue => {
+    if (newValue == "") {
+        return;
+    }
     document.getElementById("tweet").innerHTML = '<div class="tweetBox">'
     + '<img id="userImage"><span id="tweetName"></span>'
     + '<hr class="border">'

@@ -31,7 +31,7 @@ function init() {
 
     const imageAssets = nodecg.Replicant('assets:rtaGamers');
     imageAssets.on('change', newValue => {
-        if (newValue == undefined) {
+        if (newValue[0] == undefined) {
             return;
         }
         let proxy = new Proxy(newValue[0], {});

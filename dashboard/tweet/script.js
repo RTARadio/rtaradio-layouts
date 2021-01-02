@@ -8,7 +8,7 @@ let tweets;
 
 const tweetsRep = nodecg.Replicant('tweets');
 tweetsRep.on("change", newValue => {
-    if (newValue == undefined) {
+    if (newValue[0] == undefined) {
         return;
     }
     tweets = newValue;
