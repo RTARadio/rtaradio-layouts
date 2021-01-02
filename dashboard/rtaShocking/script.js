@@ -15,128 +15,64 @@ dataRep.on("change", newValue => {
     rtaShockingData = newValue;
     let htmlList = '';
     for(let i in newValue) {
-            htmlList += `<div>
-            <div>
-            <span>${rtaShockingData[index].name}</span><br>
-            <span class="userid">@${value.user.screenName}</span>
-            </div>
-            <div>${value.text}</div>
-            <button onclick="addPickupTweet(${index});">放送に表示</button>
-            <button onclick="deletePostTweet(${index});">おたより一覧から削除</button>
-            <hr class="border">
-            </div>`;
+        let nameValue = "";
+        if (rtaShockingData[i].name != "") {
+            nameValue = `${rtaShockingData[i].name} さん`
+        }
+        htmlList += `<div>
+        <div>
+        <span class="userid">${nameValue}</span><br>
+        <span>${rtaShockingData[i].description}</span>
+        <button id="pickup${i}" onclick="shockingPickup(${i});">放送に表示</button>
+        <hr class="border">
+        </div>`;
     }
     rtaShocking.innerHTML = htmlList;
 });
 
-const pickupTweetRep = nodecg.Replicant('pickupTweet');
-pickupTweetRep.on("change", newValue => {
-    if (newValue == undefined) {
-        return;
-    }
-    pickupTweetData = newValue;
-    let tweetsList = '';
-    pickupTweetData.forEach(function(value, index) {
-        if (pickupTweetData.length != index) {
-            tweetsList += `<div>
-            <div>
-            <img class="image" src="${value.user.profileImageUrl}">
-            <span>${value.user.name}</span><br>
-            <span class="userid">@${value.user.screenName}</span>
-            </div>
-            <div>${value.text}</div>
-            <button onclick="movePickupTweet(${index});">おたより一覧に戻す</button>
-            <hr class="border">
-            </div>`;
+function shockingGuest() {
+    shockingGuestButton.disabled = true;
+    shockingProfileButton.disabled = false;
+    nodecg.sendMessage('shockingGuest');
+}
+
+function shockingProfile() {
+    shockingProfileButton.disabled = true;
+    shockingLetterButton.disabled = false;
+    nodecg.sendMessage('shockingProfile');
+}
+
+function shockingLetter() {
+    shockingLetterButton.disabled = true;
+    shockingTitleButton.disabled = false;
+    nodecg.sendMessage('shockingLetter');
+}
+
+function shockingTitle() {
+    shockingTitleButton.disabled = true;
+    shockingNextButton.disabled = false;
+    nodecg.sendMessage('shockingTitle');
+}
+
+function shockingNext() {
+    shockingNextButton.disabled = true;
+    shockingNextGuestButton.disabled = false;
+    nodecg.sendMessage('shockingNext');
+}
+
+function shockingNextGuest() {
+    shockingNextGuestButton.disabled = true;
+    shockingGuestButton.disabled = false;
+    nodecg.sendMessage('shockingNextGuest');
+}
+
+function shockingPickup(index) {
+    for(let i in rtaShockingData) {
+        if (i !=  index) {
+            document.getElementById('pickup' + i).disabled = false;
+        } else {
+            document.getElementById('pickup' + i).disabled = true;
         }
-    });
-    pickupTweet.innerHTML = tweetsList;
-});
-
-function addPickupTweet(index) {
-    nodecg.sendMessage("addPickupTweet", postTweetData[index]);
-    deletePostTweet(index);
-}
-
-function movePickupTweet(index) {
-    nodecg.sendMessage("addPostTweet", pickupTweetData[index]);
-    pickupTweetData.splice(index, 1);
-    pickupTweetRep.value = pickupTweetData;
-}
-
-function deletePostTweet(index) {
-    postTweetData.splice(index, 1);
-    postTweetRep.value = postTweetData;
-}
-
-function openingPre() {
-    openingPreButton.disabled = true;
-    openingJustButton.disabled = false;
-    nodecg.sendMessage('openingPre');
-}
-
-function openingJust() {
-    openingJustButton.disabled = true;
-    openingStartButton.disabled = false;
-    nodecg.sendMessage('openingJust');
-}
-
-function openingStart() {
-    openingStartButton.disabled = true;
-    openingDescriptionButton.disabled = false;
-    nodecg.sendMessage('openingStart');
-}
-
-function openingDescription() {
-    openingDescriptionButton.disabled = true;
-    openingAnnouncementButton.disabled = false;
-    nodecg.sendMessage('openingDescription');
-}
-
-function openingAnnouncement() {
-    openingAnnouncementButton.disabled = true;
-    openingRecruitButton.disabled = false;
-    nodecg.sendMessage('openingAnnouncement');
-}
-
-function openingRecruit() {
-    openingRecruitButton.disabled = true;
-    postTweetTitleButton.disabled = false;
-    nodecg.sendMessage('openingRecruit');
-}
-
-function postTweetTitle() {
-    postTweetTitleButton.disabled = true;
-    postTweetThemeButton.disabled = false;
-    nodecg.sendMessage('openingRecruitDisable');
-    nodecg.sendMessage('postTweetTitle');
-}
-
-function postTweetTheme() {
-    postTweetThemeButton.disabled = true;
-    bodyButton[0].disabled = false;
-    nodecg.sendMessage('postTweetTheme');
-}
-
-function postTweetBody(num) {
-    bodyButton[num].disabled = true;
-    if (num + 1 < 4) {
-        bodyButton[num + 1].disabled = false;
-    } else {
-        postTweetRecruitButton.disabled = false;
     }
-    nodecg.sendMessage('postTweetBody', num);
-}
-
-function postTweetRecruit() {
-    postTweetRecruitButton.disabled = true;
-    openingTitleButton.disabled = false;
-    nodecg.sendMessage('postTweetRecruit');
-}
-
-function openingTitle() {
-    openingTitleButton.disabled = true;
-    openingPreButton.disabled = false;
-    nodecg.sendMessage('postTweetRecruitDisable');
-    nodecg.sendMessage('openingTitle')
+    nodecg.sendMessage("shockingPickup", rtaShockingData[index]);
 }

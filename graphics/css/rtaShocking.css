@@ -1,0 +1,156 @@
+.logoImage {
+    width: 80%;
+    height: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#shockingGuest {
+    visibility: hidden;
+}
+
+#shockingGuestHeader {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    font-size: 72px;
+}
+
+#shockingGuestName {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 128px;
+    font-weight: 900;
+}
+
+#shockingProfile {
+    visibility: hidden;
+}
+
+#shockingProfileName {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    font-size: 72px;
+}
+
+#shockingProfileLink {
+    position: absolute;
+    top: 220px;
+    left: 100px;
+    font-size: 64px;
+}
+
+#shockingProfileDescription {
+    position: absolute;
+    top: 420px;
+    left: 100px;
+    font-size: 56px;
+}
+
+#shockingProfileGame {
+    position: absolute;
+    top: 700px;
+    left: 100px;
+    font-size: 56px;
+}
+
+.iconImage {
+    width: 64px;
+}
+
+#shockingNext {
+    visibility: hidden;
+}
+
+#shockingNextHeader {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    font-size: 72px;
+}
+
+.fontsize64 {
+    font-size: 64px;
+}
+
+.fontsize72 {
+    font-size: 72px;
+}
+
+#shockingNextGuest {
+    visibility: hidden;
+}
+
+#shockingNextGuestName {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 128px;
+    font-weight: 900;
+}
+
+#shockingNextComeon {
+    position: absolute;
+    top: 800px;
+    left: 1150px;
+    font-size: 72px;
+}
+
+#shockingLetter {
+    visibility: hidden;
+}
+
+#shockingLetterGuestName {
+    position: absolute;
+    width: 700px;
+    margin: 20px;
+    padding: 20px;
+    border: 5px solid #434343;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    top: 620px;
+    left: 100px;
+    font-size: 64px;
+    text-align: center;
+    color: #0b5394;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+#shockingLetterDescription {
+    position: absolute;
+    width: 1750px;
+    height: 170px;
+    margin: 20px;
+    padding: 20px;
+    border: 5px solid #434343;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    top: 780px;
+    left: 40px;
+    font-size: 48px;
+    text-align: center;
+    visibility: hidden;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.letterDescriptionName {
+    float: left;
+    color: red;
+}
+
+.letterDescriptionDouble {
+    font-size: 64px;
+    color: #0b5394;
+}
+
+.letterDescriptionSingle {
+    font-size: 64px;
+    line-height: 170px;
+    color: #0b5394;
+}

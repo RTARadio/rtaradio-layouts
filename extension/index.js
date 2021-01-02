@@ -20,4 +20,5 @@ async function init() {
     require('./top_record');
     require('./event_future');
     require('./event_pickup');
+    require('./rtaShocking')
 }
