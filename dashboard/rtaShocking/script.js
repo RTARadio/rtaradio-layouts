@@ -2,9 +2,6 @@
 
 let currentFile = 'rtaShocking';
 
-window.onload = function () {
-}
-
 let rtaShockingData;
 
 const dataRep = nodecg.Replicant(currentFile + 'Data');

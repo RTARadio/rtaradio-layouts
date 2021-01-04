@@ -50,6 +50,12 @@
                 "fullbleed": true
             },
             {
+                "name": "ending",
+                "title": "07_エンディング",
+                "file": "ending/index.html",
+                "fullbleed": true
+            },
+            {
                 "name": "tweet",
                 "title": "08_ツイート",
                 "file": "tweet/index.html",
@@ -79,6 +85,11 @@
             },
             {
                 "file": "05_eventInfo.html",
+                "width": 1920,
+                "height": 1080
+            },
+            {
+                "file": "07_ending.html",
                 "width": 1920,
                 "height": 1080
             }

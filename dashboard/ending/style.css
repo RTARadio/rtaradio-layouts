@@ -1,0 +1,24 @@
+.image {
+    border-radius: 50%;
+    float: left;
+}
+
+.border {
+    border:1px dashed #000000;
+}
+
+.userid {
+    color: rgb(120, 120, 120);
+}
+
+.wrapper > div {
+    flex: 1;
+    margin: 20px;
+    border-radius: 5px;
+    background-color: rgb(250, 250, 250);
+    padding: 1em;
+}
+
+.wrapper {
+    display: flex;
+}
