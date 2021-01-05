@@ -26,7 +26,7 @@ window.onload = function () {
         `;
 
         endingNextDescription.innerHTML = `
-        <span class="textBold">次回放送：${parameterData[0].date} 21:00～</span>
+        <span class="textBold">次回放送：${parameterData[0].next_date} 21:00～</span>
         `;
 
         endingNextPersonality.innerHTML = `

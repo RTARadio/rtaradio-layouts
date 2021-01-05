@@ -102,6 +102,7 @@ window.onload = function () {
         }
         let proxy = new Proxy(newValue[0], {});
         document.getElementById('shockingLetterGuestImage').src = proxy.url;
+        document.getElementById('shockingProfileGuestImage').src = proxy.url;
         document.getElementById('shockingLetterToyomanaImage').src = "material/toyomana.png";
     });
 }
