@@ -27,6 +27,11 @@ letterRep.on("change", newValue => {
     endingLetterList.innerHTML = htmlList;
 });
 
+function reload() {
+    nodecg.sendMessage('letterReload');
+    nodecg.sendMessage('parameterReload');
+}
+
 function endingLetterShow() {
     endingLetterButton.disabled = true;
     endingCliphourButton.disabled = false;

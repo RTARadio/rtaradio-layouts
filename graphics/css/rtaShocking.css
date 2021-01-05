@@ -154,3 +154,17 @@
     line-height: 170px;
     color: #0b5394;
 }
+
+#shockingLetterGuestImage {
+    position: absolute;
+    top: 150px;
+    left: 300px;
+    width: 450px;
+}
+
+#shockingLetterToyomanaImage {
+    position: absolute;
+    top: 150px;
+    left: 1200px;
+    width: 450px;
+}

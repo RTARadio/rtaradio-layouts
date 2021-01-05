@@ -94,6 +94,16 @@ window.onload = function () {
         }
         rtaShockingData = newValue;
     });
+
+    const imageAssets = nodecg.Replicant('assets:guestImage');
+    imageAssets.on('change', newValue => {
+        if (newValue[0] == undefined) {
+            return;
+        }
+        let proxy = new Proxy(newValue[0], {});
+        document.getElementById('shockingLetterGuestImage').src = proxy.url;
+        document.getElementById('shockingLetterToyomanaImage').src = "material/toyomana.png";
+    });
 }
 
 function shockingPickupShow(pickupData) {

@@ -62,6 +62,10 @@ pickupTweetRep.on("change", newValue => {
     pickupTweet.innerHTML = tweetsList;
 });
 
+function reload() {
+    nodecg.sendMessage('parameterReload');
+}
+
 function addPickupTweet(index) {
     nodecg.sendMessage("addPickupTweet", postTweetData[index]);
     deletePostTweet(index);

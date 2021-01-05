@@ -27,6 +27,10 @@ dataRep.on("change", newValue => {
     rtaShocking.innerHTML = htmlList;
 });
 
+function reload() {
+    nodecg.sendMessage('rtaShockingReload');
+}
+
 function shockingGuest() {
     shockingGuestButton.disabled = true;
     shockingProfileButton.disabled = false;

@@ -110,6 +110,15 @@
                 "allowedTypes": [
                     "png"
                 ]
+            },
+            {
+                "name": "guestImage",
+                "title": "ゲスト画像",
+                "allowedTypes": [
+                    "jpg",
+                    "jpeg",
+                    "png"
+                ]
             }
         ]
     },
