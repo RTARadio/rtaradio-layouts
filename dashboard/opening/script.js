@@ -16,7 +16,7 @@ let pickupTweetData;
 const postTweetRep = nodecg.Replicant('postTweet');
 postTweetRep.on("change", newValue => {
     if (newValue[0] == undefined) {
-        pickupTweet.innerHTML = '';
+        postTweet.innerHTML = '';
         return;
     }
     postTweetData = newValue;
