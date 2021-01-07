@@ -22,17 +22,17 @@ postTweetRep.on("change", newValue => {
     let tweetsList = '';
     postTweetData.forEach(function(value, index) {
         if (postTweetData.length != index) {
-            tweetsList += `<div>
-            <div>
-            <img class="image" src="${value.user.profileImageUrl}">
-            <span>${value.user.name}</span><br>
-            <span class="userid">@${value.user.screenName}</span>
-            </div>
-            <div>${value.text}</div>
-            <button onclick="addPickupTweet(${index});">放送に表示</button>
-            <button onclick="deletePostTweet(${index});">おたより一覧から削除</button>
-            <hr class="border">
-            </div>`;
+            tweetsList += '<div>'
+            + '<div>'
+            + '<img class="image" src="' + value.user.profileImageUrl + '">'
+            + '<span>' + value.user.name + '</span><br>'
+            + '<span class="userid">@' + value.user.screenName + '</span>'
+            + '</div>'
+            + '<div>' + value.text + '</div>'
+            + '<button onclick="addPickupTweet(' + index + ');">放送に表示</button>'
+            + '<button onclick="deletePostTweet(' + index + ');">おたより一覧から削除</button>'
+            + '<hr class="border">'
+            + '</div>';
         }
     });
     postTweet.innerHTML = tweetsList;
@@ -47,16 +47,16 @@ pickupTweetRep.on("change", newValue => {
     let tweetsList = '';
     pickupTweetData.forEach(function(value, index) {
         if (pickupTweetData.length != index) {
-            tweetsList += `<div>
-            <div>
-            <img class="image" src="${value.user.profileImageUrl}">
-            <span>${value.user.name}</span><br>
-            <span class="userid">@${value.user.screenName}</span>
-            </div>
-            <div>${value.text}</div>
-            <button onclick="movePickupTweet(${index});">おたより一覧に戻す</button>
-            <hr class="border">
-            </div>`;
+            tweetsList += '<div>'
+            + '<div>'
+            + '<img class="image" src="' + value.user.profileImageUrl + '">'
+            + '<span>' + value.user.name + '</span><br>'
+            + '<span class="userid">@' + value.user.screenName + '</span>'
+            + '</div>'
+            + '<div>' + value.text + '</div>'
+            + '<button onclick="movePickupTweet(' + index + ');">おたより一覧に戻す</button>'
+            + '<hr class="border">'
+            + '</div>';
         }
     });
     pickupTweet.innerHTML = tweetsList;
