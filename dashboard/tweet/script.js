@@ -9,6 +9,7 @@ let tweets;
 const tweetsRep = nodecg.Replicant('tweets');
 tweetsRep.on("change", newValue => {
     if (newValue[0] == undefined) {
+        tweet.innerHTML = '';
         return;
     }
     tweets = newValue;
