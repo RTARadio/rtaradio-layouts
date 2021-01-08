@@ -163,9 +163,9 @@ window.onload = function () {
     });
 
     // タイトル書き換え
-    recordTitle.innerHTML = '<span class="titleHeader"></span><br>'
-    + '<span class="titleBody">今週の記録更新</span><br>'
-    + '<span class="titleFooter"></span>';
+    recordTitle.innerHTML = `
+    <img class="logoImage" src="material/logo_recordNews.png">
+    `;
 
     // アニメーションの指定
     recordTitleAnimation = anime({

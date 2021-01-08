@@ -1,10 +1,12 @@
+.logoImage {
+    width: 830px;
+}
+
 #recordTitle {
     position: absolute;
-    top: 300px;
+    top: 400px;
     left: -1000px;
-    text-align: center;
     visibility: hidden;
-    color: white;
 }
 
 #recordTopTopics {
@@ -23,7 +25,8 @@
 
 .recordTopicsTitle {
     font-size: 128px;
-    color: white;
+    color: yellow;
+    text-shadow: 1px 2px 3px #808080;
 }
 
 .recordTopicsBox {
