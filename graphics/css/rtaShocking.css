@@ -86,18 +86,26 @@
     visibility: hidden;
 }
 
+#shockingNextGuestImage {
+    position: absolute;
+    top: 330px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 350px;
+}
+
 #shockingNextGuestName {
     position: absolute;
-    top: 50%;
+    top: 650px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0);
     font-size: 128px;
     font-weight: 900;
 }
 
 #shockingNextComeon {
     position: absolute;
-    top: 800px;
+    top: 900px;
     left: 1150px;
     font-size: 72px;
 }

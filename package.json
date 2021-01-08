@@ -113,7 +113,16 @@
             },
             {
                 "name": "guestImage",
-                "title": "ゲスト画像",
+                "title": "今回ゲスト画像",
+                "allowedTypes": [
+                    "jpg",
+                    "jpeg",
+                    "png"
+                ]
+            },
+            {
+                "name": "nextGuestImage",
+                "title": "次回ゲスト画像",
                 "allowedTypes": [
                     "jpg",
                     "jpeg",
