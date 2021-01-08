@@ -1,9 +1,18 @@
-#postTweetTitle {
+.logoImage {
     position: absolute;
-    top: 300px;
+    top: 700px;
     left: 50%;
     transform: translate(-50%, 0);
-    text-align: center;
+}
+
+.mainLogo {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#postTweetTitle {
     visibility: hidden;
 }
 
@@ -27,13 +36,29 @@
 
 #postTweetTheme {
     position: absolute;
-    top: 100px;
+    width: 1200px;
+    height: 204px;
+    margin: 20px;
+    padding: 20px;
+    border: 10px solid cornflowerblue;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    color: #0b5394;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, 0);
-    /* color: white; */
-    font-size: 144px;
-    text-align: center;
+    transform: translate(-50%, -50%);
+    font-size: 56px;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
     visibility: hidden;
+}
+
+.icon {
+    float: left;
+    padding-right: 20px;
+}
+
+.postTweetThemeTitle {
+    font-size: 80px;
 }
 
 .postTweetBody {

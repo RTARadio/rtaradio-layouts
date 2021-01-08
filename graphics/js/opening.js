@@ -41,9 +41,10 @@ window.onload = function () {
         `;
 
         postTweetTheme.innerHTML = `
-        <div class="postTweetHeader el">
+        <img class="icon" src="material/postTweetIcon.png" width="200px">
+        <div>
         今回のお題<br>
-        ${parameterData[0].tweet_theme}
+        <span class="postTweetThemeTitle">${parameterData[0].tweet_theme}</span>
         </div>
         `;
 
@@ -122,9 +123,8 @@ window.onload = function () {
 
     // タイトル書き換え
     postTweetTitle.innerHTML = `
-    <span class="titleHeader">Twitter</span><br>
-    <span class="titleBody">おたよりコーナー</span><br>
-    <span class="titleFooter"></span>
+    <img class="mainLogo" src="material/logo.png" width="1209px" height="674px">
+    <img class="logoImage" src="material/logo_postTweet.png" width="1303px" height="331px">
     `;
 
     // フッター書き換え
