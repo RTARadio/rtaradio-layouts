@@ -15,7 +15,7 @@ tweetsRep.on("change", newValue => {
     tweets = newValue;
     let tweetsList = '';
     tweets.forEach(function(value, index) {
-        if (tweets.length - 1 != index) {
+        if (tweets.length != index) {
             tweetsList += '<div>'
             + '<div><img class="image" src="' + value.user.profileImageUrl + '"><span>'+ value.user.name + '</span><span>:@' + value.user.screenName + '</span></div>'
             + '<div>'+ value.text + '</div>'

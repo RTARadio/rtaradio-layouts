@@ -14,49 +14,49 @@
         "compatibleRange": "^1.0.0",
         "dashboardPanels": [
             {
-                "name": "opening",
+                "name": "01_opening",
                 "title": "01_オープニング",
                 "file": "opening/index.html",
                 "fullbleed": true
             },
             {
-                "name": "rtaShocking",
+                "name": "02_rtaShocking",
                 "title": "02_ショッキング",
                 "file": "rtaShocking/index.html",
                 "fullbleed": true
             },
             {
-                "name": "rtaGamers",
+                "name": "03_rtaGamers",
                 "title": "03_RTAGamers",
                 "file": "rtaGamers/index.html",
                 "fullbleed": true
             },
             {
-                "name": "recordNews",
+                "name": "04_recordNews",
                 "title": "04_記録更新",
                 "file": "recordNews/index.html",
                 "fullbleed": true
             },
             {
-                "name": "eventInfo",
+                "name": "05_eventInfo",
                 "title": "05_イベント",
                 "file": "eventInfo/index.html",
                 "fullbleed": true
             },
             {
-                "name": "rtaRacing",
+                "name": "06_rtaRacing",
                 "title": "06_レーシング",
                 "file": "rtaRacing/index.html",
                 "fullbleed": true
             },
             {
-                "name": "ending",
+                "name": "07_ending",
                 "title": "07_エンディング",
                 "file": "ending/index.html",
                 "fullbleed": true
             },
             {
-                "name": "tweet",
+                "name": "08_tweet",
                 "title": "08_ツイート",
                 "file": "tweet/index.html",
                 "fullbleed": true
