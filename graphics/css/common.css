@@ -46,3 +46,13 @@ body {
     width: 1820px;
     background-color: rgba(255, 255, 255, 0.65);
 }
+
+#commonLogo {
+    position: absolute;
+    top: 50px;
+    left: 1370px;
+}
+
+.hiddenLogo {
+    visibility: hidden;
+}

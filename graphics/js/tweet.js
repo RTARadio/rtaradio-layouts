@@ -17,10 +17,18 @@ nodecg.Replicant('showTweet').on("change", newValue => {
 function showTweet() {
     tweet.style.visibility = "visible";
     anime({
+        targets: '#commonLogo',
+        translateX: 600,
+        easing: 'easeInQuart',
+        direction: 'alternate',
+        endDelay: 5000,
+    });
+    anime({
         targets: '#tweet',
         translateX: -600,
         easing: 'easeOutQuart',
         direction: 'alternate',
+        delay: 2000,
         endDelay: 3000,
     });
 }
