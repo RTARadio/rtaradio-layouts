@@ -72,5 +72,6 @@
 }
 
 #gamersDetailImage {
-    height: 95%;
+    max-height: 760px;
+    max-width: 1200px;
 }

@@ -90,7 +90,15 @@ window.onload = function () {
             return;
         }
         rtaGamersAssets = new Proxy(newValue[0], {});
-        document.getElementById('gamersDetailImage').src = rtaGamersAssets.url;
+        let imageElement = document.getElementById('gamersDetailImage');
+        imageElement.src = rtaGamersAssets.url;
+        imageElement.onload = function() {
+            let widthScale = 1200 / imageElement.naturalWidth;
+            let heightScale = 760 / imageElement.naturalHeight;
+            let useScale = Math.min(widthScale, heightScale);
+            imageElement.width = imageElement.naturalWidth * useScale;
+            imageElement.height = imageElement.naturalHeight * useScale;
+        }
     });
 
     // タイトル書き換え
