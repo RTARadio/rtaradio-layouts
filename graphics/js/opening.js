@@ -2,32 +2,8 @@
 
 // 使用する変数
 let parameterData;
-let showTweetData;
-
-let openingTitle;
-let openingTitleLogo;
-let openingTitleNumber;
-let openingTitleFooter;
-let openingDescription;
-let openingAnnouncement;
-let openingRecruit;
-
-let postTweetTitle;
-let postTweetTheme;
-let postTweetHeader;
-let postTweetFooter;
-const postTweetBody = {};
-let postTweetRecruit;
 
 window.onload = function () {
-    openingTitle = document.getElementById("openingTitle");
-    openingTitleLogo = document.getElementById("openingTitleLogo");
-    openingTitleNumber = document.getElementById("openingTitleNumber");
-    openingTitleFooter = document.getElementById("openingTitleFooter");
-    openingDescription = document.getElementById("openingDescription");
-    openingAnnouncement = document.getElementById("openingAnnouncement");
-    openingRecruit = document.getElementById("openingRecruit");
-
     openingTitleLogo.innerHTML = `<img src="material/logo.png" width="1209px" height="674px">`
 
     // Replicantの設定
@@ -98,39 +74,15 @@ window.onload = function () {
     関する宣伝をしていただきます<br>
     （CMを流す等）
     </div>`;
-    
-    postTweetTitle = document.getElementById("postTweetTitle");
-    postTweetTheme = document.getElementById("postTweetTheme");
-    postTweetHeader = document.getElementById("postTweetHeader");
-    postTweetFooter = document.getElementById("postTweetFooter");
-    postTweetBody[0] = document.getElementById("postTweetBody0");
-    postTweetBody[1] = document.getElementById("postTweetBody1");
-    postTweetBody[2] = document.getElementById("postTweetBody2");
-    postTweetBody[3] = document.getElementById("postTweetBody3");
-    postTweetRecruit = document.getElementById("postTweetRecruit");
 
-    // Replicantの設定
-    nodecg.Replicant('pickupTweet').on("change", newValue => {
-        if (newValue == undefined) {
-            return;
-        }
-        showTweetData = newValue;
-        console.log(showTweetData.length);
-        for (let index = 0; index < showTweetData.length; index++) {
-            postTweetInnerChange(index);
-        }
-    });
-
-    // タイトル書き換え
     postTweetTitle.innerHTML = `
     <img class="mainLogo" src="material/logo.png" width="1209px" height="674px">
-    <img class="logoImage" src="material/logo_postTweet.png" width="1303px" height="331px">
+    <img class="postTweetLogo" src="material/logo_postTweet.png" width="1303px" height="331px">
     `;
 
-    // フッター書き換え
     postTweetFooter.innerHTML = `
     <div class="postTweetFooter el">
-    ハッシュタグ <br>
+    ハッシュタグ<br>
     #あるらじ #RTARadio
     </div>
     `;
@@ -147,14 +99,15 @@ window.onload = function () {
     `;
 }
 
-function postTweetInnerChange(index) {
-    postTweetBody[index].innerHTML = `<div>
+function postTweetPickupShow(pickupData) {
+    postTweetBody.style.visibility = "visible";
+    document.getElementById(`postTweetBody`).innerHTML = `<div>
     <div>
-    <img class="postTweetImage" src="${showTweetData[index].user.profileImageUrl}">
-    <span>${showTweetData[index].user.name}</span><br>
-    <span class="postTweetUserid">@${showTweetData[index].user.screenName}</span>
+    <img class="postTweetImage" src="${pickupData.user.profileImageUrl}">
+    <span>${pickupData.user.name}</span><br>
+    <span class="postTweetUserid">@${pickupData.user.screenName}</span>
     </div>
-    <div>${showTweetData[index].text}</div>
+    <div>${pickupData.text}</div>
     </div>`;
 }
 
@@ -202,33 +155,27 @@ function postTweetThemeShow() {
     postTweetTheme.style.visibility = "visible";
 }
 
-function postTweetBodyShow(number) {
-    postTweetHeader.style.visibility = "visible";
-    postTweetFooter.style.visibility = "visible";
-    if (number == 0) {
-        postTweetTheme.style.visibility = "hidden";
-    } else {
-        postTweetBody[number - 1].style.visibility = "hidden";
-    }
-    postTweetBody[number].style.visibility = "visible";
+function postTweetBodyShow() {
+    postTweetTheme.style.visibility = "hidden";
+    postTweetDescription.style.visibility = "visible";
 }
 
 function postTweetRecruitShow() {
-    postTweetBody[3].style.visibility = "hidden";
+    postTweetBody.style.visibility = "hidden";
     postTweetRecruit.style.visibility = "visible";
 }
 
 function postTweetRecruitDisable() {
-    postTweetHeader.style.visibility = "hidden";
-    postTweetFooter.style.visibility = "hidden";
+    postTweetDescription.style.visibility = "hidden";
     postTweetRecruit.style.visibility = "hidden";
 }
 
 nodecg.listenFor('postTweetTitle', postTweetTitleShow);
 nodecg.listenFor('postTweetTheme', postTweetThemeShow);
-nodecg.listenFor('postTweetBody', (newValue) => { postTweetBodyShow(newValue) });
+nodecg.listenFor('postTweetBody', postTweetBodyShow);
 nodecg.listenFor('postTweetRecruit', postTweetRecruitShow);
 nodecg.listenFor('postTweetRecruitDisable', postTweetRecruitDisable);
+nodecg.listenFor('postTweetPickup', (newValue) => { postTweetPickupShow(newValue) });
 
 nodecg.listenFor('openingPre', openingPreShow);
 nodecg.listenFor('openingJust', openingJustShow);

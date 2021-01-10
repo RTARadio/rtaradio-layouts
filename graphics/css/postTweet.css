@@ -1,10 +1,3 @@
-.logoImage {
-    position: absolute;
-    top: 700px;
-    left: 50%;
-    transform: translate(-50%, 0);
-}
-
 .mainLogo {
     position: absolute;
     top: 50px;
@@ -12,25 +5,14 @@
     transform: translate(-50%, 0);
 }
 
+.postTweetLogo {
+    position: absolute;
+    top: 700px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
 #postTweetTitle {
-    visibility: hidden;
-}
-
-#postTweetHeader {
-    position: absolute;
-    top: 50px;
-    left: 60px;
-    /* color: white; */
-    font-size: 72px;
-    visibility: hidden;
-}
-
-#postTweetFooter {
-    position: absolute;
-    top: 830px;
-    left: 1150px;
-    /* color: white; */
-    font-size: 72px;
     visibility: hidden;
 }
 
@@ -61,7 +43,25 @@
     font-size: 80px;
 }
 
-.postTweetBody {
+#postTweetDescription {
+    visibility: hidden;
+}
+
+#postTweetHeader {
+    position: absolute;
+    top: 50px;
+    left: 60px;
+    font-size: 72px;
+}
+
+#postTweetFooter {
+    position: absolute;
+    top: 830px;
+    left: 1150px;
+    font-size: 72px;
+}
+
+#postTweetBody {
     position: absolute;
     width: 700px;
     margin: 20px;
@@ -92,7 +92,5 @@
     left: 75px;
     transform: translate(0, -50%);
     font-size: 48px;
-    /* font-style: oblique; */
-    /* font-weight: 900; */
     visibility: hidden;
 }
