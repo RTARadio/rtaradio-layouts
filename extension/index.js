@@ -13,9 +13,9 @@ module.exports = nodecg => {
 };
 
 async function init() {
+    require('./initialization/03_rtaGamers');
     require('./parameter');
     require('./twitter');
-    require('./rtaGamers');
     require('./pb_record');
     require('./top_record');
     require('./event_future');
