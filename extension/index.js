@@ -1,4 +1,4 @@
-const nodecgApiContext = require("./util/nodecg-api-context");
+const nodecgApiContext = require('./util/nodecg-api-context');
 
 module.exports = nodecg => {
     // Store a reference to this nodecg API context in a place where other libs can easily access it.
@@ -15,7 +15,7 @@ module.exports = nodecg => {
 async function init() {
     require('./parameter');
     require('./twitter');
-    require('./rta_gamers');
+    require('./rtaGamers');
     require('./pb_record');
     require('./top_record');
     require('./event_future');

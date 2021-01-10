@@ -1,18 +1,9 @@
 'use strict';
 
-let currentFile = 'rta_gamers';
+const CURRENT_FILE = 'rtaGamers';
 
 window.onload = function () {
-    const reloadButton = document.getElementById('reloadButton');
-    const titleButton = document.getElementById('titleButton');
-    const topics0Button = document.getElementById('topics0Button');
-    const detail0Button = document.getElementById('detail0Button');
-    const endButton = document.getElementById('endButton');
-    init();
-}
-
-function init() {
-    const dataRep = nodecg.Replicant('data_' + currentFile);
+    const dataRep = nodecg.Replicant(`${CURRENT_FILE}Data`);
     dataRep.on('change', newValue => {
         if (newValue == undefined) {
             return;
@@ -29,8 +20,7 @@ function init() {
         }
     });
 
-    const imageAssets = nodecg.Replicant('assets:rtaGamers');
-    imageAssets.on('change', newValue => {
+    nodecg.Replicant(`assets:${CURRENT_FILE}`).on('change', newValue => {
         if (newValue[0] == undefined) {
             return;
         }
@@ -40,29 +30,29 @@ function init() {
 }
 
 function reload() {
-    nodecg.sendMessage('reload_' + currentFile);
+    nodecg.sendMessage(`${CURRENT_FILE}Reload`);
 }
 
 function showTitle() {
     titleButton.disabled = true;
-    topics0Button.disabled = false;
-    nodecg.sendMessage('title_' + currentFile);
+    topicsButton.disabled = false;
+    nodecg.sendMessage(`${CURRENT_FILE}Title`);
 }
 
-function showTopics0() {
-    topics0Button.disabled = true;
-    detail0Button.disabled = false;
-    nodecg.sendMessage('topics0_' + currentFile);
+function showTopics() {
+    topicsButton.disabled = true;
+    detailButton.disabled = false;
+    nodecg.sendMessage(`${CURRENT_FILE}Topics`);
 }
 
-function showDetail0() {
-    detail0Button.disabled = true;
+function showDetail() {
+    detailButton.disabled = true;
     endButton.disabled = false;
-    nodecg.sendMessage('detail0_' + currentFile);
+    nodecg.sendMessage(`${CURRENT_FILE}Detail`);
 }
 
 function showEnd() {
     endButton.disabled = true;
     titleButton.disabled = false;
-    nodecg.sendMessage('end_' + currentFile);
+    nodecg.sendMessage(`${CURRENT_FILE}End`);
 }
