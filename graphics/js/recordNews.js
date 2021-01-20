@@ -40,7 +40,7 @@ window.onload = function () {
         topRecordData = newValue;
 
         // 日本/世界記録更新書き換え
-        recordTopTopics.innerHTML = '<div class="recordTopicsTitle el">日本/世界記録更新</div>';
+        recordTopTopics.innerHTML = '<img class="recordTopicsTitle el" src="material/recordNews_title_top.png">';
         for(let i in topRecordData) {
             recordTopTopics.innerHTML += '<div id="topRecordText' + i + '" class="recordTopicsBox el">'
             + '<span class="left">' + topRecordData[i].game_title + '</span><span class="right">' + topRecordData[i].runner_name + '</span><br>'
@@ -104,7 +104,7 @@ window.onload = function () {
         pbRecordData = newValue;
 
         // 自己記録更新書き換え
-        recordPbTopics.innerHTML = '<div class="recordTopicsTitle el">自己記録更新</div>';
+        recordPbTopics.innerHTML = '<img class="recordTopicsTitle el" src="material/recordNews_title_pb.png">';
         for(let i in pbRecordData) {
             recordPbTopics.innerHTML += '<div id="pbRecordText' + i + '" class="recordTopicsBox el">'
             + '<span class="left">' + pbRecordData[i].game_title + '</span><span class="right">' + pbRecordData[i].runner_name + '</span><br>'
@@ -161,11 +161,6 @@ window.onload = function () {
             duration: 1000
         });
     });
-
-    // タイトル書き換え
-    recordTitle.innerHTML = `
-    <img class="logoImage" src="material/logo_recordNews.png">
-    `;
 
     // アニメーションの指定
     recordTitleAnimation = anime({
