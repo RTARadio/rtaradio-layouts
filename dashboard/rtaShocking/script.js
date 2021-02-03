@@ -28,6 +28,7 @@ dataRep.on("change", newValue => {
 });
 
 function reload() {
+    nodecg.sendMessage('parameterReload');
     nodecg.sendMessage('rtaShockingReload');
 }
 
