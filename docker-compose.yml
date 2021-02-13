@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  nodecg:
+    image: gunimus/rtaradio-layouts
+    build: 
+      context: .
+    volumes:
+      - ./dashboard:/app/nodecg/bundles/rtaradio_layouts/dashboard
+      - ./extension:/app/nodecg/bundles/rtaradio_layouts/extension
+      - ./graphics:/app/nodecg/bundles/rtaradio_layouts/graphics
+      - ./cfg:/app/nodecg/cfg
+      - ./nodecg/db:/app/nodecg/db
+      - ./nodecg/logs:/app/nodecg/logs
+      - ./nodecg/assets:/app/nodecg/assets
+    ports: 
+      - 9090:9090
