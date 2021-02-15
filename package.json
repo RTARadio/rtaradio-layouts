@@ -39,31 +39,31 @@
             {
                 "name": "04_recordNews",
                 "title": "04_記録更新",
-                "file": "recordNews/index.html",
+                "file": "04_recordNews/index.html",
                 "fullbleed": true
             },
             {
                 "name": "05_eventInfo",
                 "title": "05_イベント",
-                "file": "eventInfo/index.html",
+                "file": "05_eventInfo/index.html",
                 "fullbleed": true
             },
             {
                 "name": "06_rtaRacing",
                 "title": "06_レーシング",
-                "file": "rtaRacing/index.html",
+                "file": "06_rtaRacing/index.html",
                 "fullbleed": true
             },
             {
                 "name": "07_ending",
                 "title": "07_エンディング",
-                "file": "ending/index.html",
+                "file": "07_ending/index.html",
                 "fullbleed": true
             },
             {
                 "name": "08_tweet",
                 "title": "08_ツイート",
-                "file": "tweet/index.html",
+                "file": "08_tweet/index.html",
                 "fullbleed": true
             }
         ],

@@ -3,18 +3,7 @@
 let currentFile = 'record_news';
 
 window.onload = function () {
-    const reloadButton = document.getElementById('reloadButton');
-    const titleButton = document.getElementById('titleButton');
-    const topicsTopButton = document.getElementById('topicsTopButton');
-    const detailTopButton = document.getElementById('detailTopButton');
-    const topicsPbButton = document.getElementById('topicsPbButton');
-    const detailPbButton = document.getElementById('detailPbButton');
-    const endButton = document.getElementById('endButton');
-    init();
-}
-
-function init() {
-    nodecg.Replicant('data_top_record').on('change', newValue => {
+    nodecg.Replicant('top_recordData').on('change', newValue => {
         if (newValue == undefined) {
             return;
         }
@@ -30,7 +19,7 @@ function init() {
         }
     });
 
-    nodecg.Replicant('data_pb_record').on('change', newValue => {
+    nodecg.Replicant('pb_recordData').on('change', newValue => {
         if (newValue == undefined) {
             return;
         }
@@ -48,8 +37,8 @@ function init() {
 }
 
 function reload() {
-    nodecg.sendMessage('reload_pb_record');
-    nodecg.sendMessage('reload_top_record');
+    nodecg.sendMessage('pb_recordReload');
+    nodecg.sendMessage('top_recordReload');
 }
 
 function showTitle() {
