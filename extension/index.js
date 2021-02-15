@@ -14,12 +14,12 @@ module.exports = nodecg => {
 
 async function init() {
     require('./initialization/00_parameter');
+    require('./initialization/02_rtaShocking');
     require('./initialization/03_rtaGamers');
     require('./twitter');
     require('./pb_record');
     require('./top_record');
     require('./event_future');
     require('./event_pickup');
-    require('./rtaShocking');
     require('./letter');
 }
