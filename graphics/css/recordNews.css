@@ -5,22 +5,19 @@
 #recordTitle {
     position: absolute;
     top: 372px;
-    left: -1000px;
-    visibility: hidden;
+    left: -1100px;
 }
 
 #recordTopTopics {
     position: absolute;
     top: 0px;
     left: -1300px;
-    visibility: hidden;
 }
 
 #recordPbTopics {
     position: absolute;
     top: 0px;
     left: -1300px;
-    visibility: hidden;
 }
 
 .recordTopicsTitle {
@@ -49,14 +46,12 @@
     position: absolute;
     top: 0px;
     left: -1300px;
-    visibility: hidden;
 }
 
 #recordPbDetail {
     position: absolute;
     top: 0px;
     left: -1300px;
-    visibility: hidden;
 }
 
 .recordTitleBox {

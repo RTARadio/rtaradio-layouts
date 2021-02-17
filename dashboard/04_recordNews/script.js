@@ -1,9 +1,11 @@
 'use strict';
 
-let currentFile = 'record_news';
+const CURRENT_FILE = 'recordNews';
+const TOP_RECORD = 'top_record';
+const PB_RECORD = 'pb_record';
 
 window.onload = function () {
-    nodecg.Replicant('top_recordData').on('change', newValue => {
+    nodecg.Replicant(`${TOP_RECORD}Data`).on('change', newValue => {
         if (newValue == undefined) {
             return;
         }
@@ -19,7 +21,7 @@ window.onload = function () {
         }
     });
 
-    nodecg.Replicant('pb_recordData').on('change', newValue => {
+    nodecg.Replicant(`${PB_RECORD}Data`).on('change', newValue => {
         if (newValue == undefined) {
             return;
         }
@@ -37,42 +39,42 @@ window.onload = function () {
 }
 
 function reload() {
-    nodecg.sendMessage('pb_recordReload');
-    nodecg.sendMessage('top_recordReload');
+    nodecg.sendMessage(`${TOP_RECORD}Reload`);
+    nodecg.sendMessage(`${PB_RECORD}Reload`);
 }
 
 function showTitle() {
     titleButton.disabled = true;
     topicsTopButton.disabled = false;
-    nodecg.sendMessage('title_' + currentFile);
+    nodecg.sendMessage(`${CURRENT_FILE}Title`);
 }
 
 function showTopicsTop() {
     topicsTopButton.disabled = true;
     detailTopButton.disabled = false;
-    nodecg.sendMessage('topics_top_' + currentFile);
+    nodecg.sendMessage(`${CURRENT_FILE}TopicsTop`);
 }
 
 function showDetailTop() {
     detailTopButton.disabled = true;
     topicsPbButton.disabled = false;
-    nodecg.sendMessage('detail_top_' + currentFile);
+    nodecg.sendMessage(`${CURRENT_FILE}DetailTop`);
 }
 
 function showTopicsPb() {
     topicsPbButton.disabled = true;
     detailPbButton.disabled = false;
-    nodecg.sendMessage('topics_pb_' + currentFile);
+    nodecg.sendMessage(`${CURRENT_FILE}TopicsPb`);
 }
 
 function showDetailPb() {
     detailPbButton.disabled = true;
     endButton.disabled = false;
-    nodecg.sendMessage('detail_pb_' + currentFile);
+    nodecg.sendMessage(`${CURRENT_FILE}DetailPb`);
 }
 
 function showEnd() {
     endButton.disabled = true;
     titleButton.disabled = false;
-    nodecg.sendMessage('end_' + currentFile);
+    nodecg.sendMessage(`${CURRENT_FILE}End`);
 }

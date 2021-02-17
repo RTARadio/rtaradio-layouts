@@ -1,39 +1,25 @@
 'use strict';
 
-let recordTitle;
-let recordTopTopics;
-let recordTopDetail;
-let recordPbTopics;
-let recordPbDetail;
+// 現在のファイル名
+const CURRENT_FILE = "recordNews"
 
-// アニメーション初期化
-let recordTitleAnimation;
-let recordTitleAnimationRev;
-let recordTopicsTopAnimation;
-let recordTopicsTopAnimationRev;
-let recordDetailTopAnimation;
-let recordDetailTopAnimationRev;
-let recordTopicsPbAnimation;
-let recordTopicsPbAnimationRev;
-let recordDetailPbAnimation;
-let recordDetailPbAnimationRev;
-let recordEndAnimation;
-let recordAnimationEasing = 'easeOutBack';
-let recordAnimationEasingRev = 'easeOutBack';
+// アニメーション定義
+const ANIMATION = {
+    EASING_NORMAL: 'easeOutBack',
+    EASING_REVERSE: 'easeInBack',
+    TRANSLATE_NORMAL: 1300,
+    TRANSLATE_REVERSE: -1300,
+    DURATION_TIME: 1000,
+    DELAY_TIME: 1500
+}
 
 // 使用する変数
 let topRecordData;
 let pbRecordData;
 
 window.onload = function () {
-    recordTitle = document.getElementById("recordTitle");
-    recordTopTopics = document.getElementById("recordTopTopics");
-    recordTopDetail = document.getElementById("recordTopDetail");
-    recordPbTopics = document.getElementById("recordPbTopics");
-    recordPbDetail = document.getElementById("recordPbDetail");
-
     // Replicantの設定
-    nodecg.Replicant("data_top_record").on("change", newValue => {
+    nodecg.Replicant("top_recordData").on("change", newValue => {
         if (newValue == undefined) {
             return;
         }
@@ -42,62 +28,28 @@ window.onload = function () {
         // 日本/世界記録更新書き換え
         recordTopTopics.innerHTML = '<img class="recordTopicsTitle el" src="material/recordNews_title_top.png">';
         for(let i in topRecordData) {
-            recordTopTopics.innerHTML += '<div id="topRecordText' + i + '" class="recordTopicsBox el">'
-            + '<span class="left">' + topRecordData[i].game_title + '</span><span class="right">' + topRecordData[i].runner_name + '</span><br>'
-            + '<span class="left">' + topRecordData[i].category + '</span><span class="right">' + topRecordData[i].time + '</span>'
-            + '</div>';
+            recordTopTopics.innerHTML += `<div id="topRecordText${i}" class="recordTopicsBox el">
+            <span class="left">${topRecordData[i].game_title}</span><span class="right">${topRecordData[i].runner_name}</span><br>
+            <span class="left">${topRecordData[i].category}</span><span class="right">${topRecordData[i].time}</span>
+            </div>`;
         }
     
         // 日本/世界記録更新ピックアップ書き換え
         for(let i in topRecordData) {
             if (topRecordData[i].date != "") {
-                recordTopDetail.innerHTML = '<div class="recordTitleBox">'
-                + '<span class="left">' + topRecordData[i].game_title + '</span><span class="right">' + topRecordData[i].category + '</span>'
-                + '</div>'
-                + '<div class="recordDetailBox">'
-                + '<span class="left">' + topRecordData[i].date + '</span><span class="right">' + topRecordData[i].time + '</span><br>'
-                + '<span class="left">' + topRecordData[i].runner_name + ' さん</span><br><br>'
-                + '<span id="topDescriptionText"></span>'
-                + '</div>';
+                recordTopDetail.innerHTML = `<div class="recordTitleBox">
+                <span class="left">${topRecordData[i].game_title}</span><span class="right">${topRecordData[i].category}</span>
+                </div>
+                <div class="recordDetailBox">
+                <span class="left">${topRecordData[i].date}</span><span class="right">${topRecordData[i].time}</span><br>
+                <span class="left">${topRecordData[i].runner_name}さん</span><br><br>
+                <span id="topDescriptionText"></span>
+                </div>`;
                 document.getElementById('topDescriptionText').innerText = topRecordData[i].description;
             }
         }
-
-        recordTopicsTopAnimation = anime({
-            targets: '#recordTopTopics .el',
-            translateX: 1300,
-            easing: recordAnimationEasing,
-            duration: 1000,
-            delay: anime.stagger(100, {start: 1500})
-        });
-        
-        recordTopicsTopAnimationRev = anime({
-            targets: '#recordTopTopics .el',
-            translateX: 1300,
-            easing: recordAnimationEasingRev,
-            duration: 1000,
-            delay: anime.stagger(100),
-            direction: 'reverse',
-            endDelay: 1000
-        });
-        
-        recordDetailTopAnimation = anime({
-            targets: '#recordTopDetail',
-            translateX: 1300,
-            easing: recordAnimationEasing,
-            duration: 1000,
-            delay: 2500
-        });
-    
-        recordDetailTopAnimationRev = anime({
-            targets: '#recordTopDetail',
-            translateX: 1300,
-            easing: recordAnimationEasingRev,
-            direction: 'reverse',
-            duration: 1000
-        });
     });
-    nodecg.Replicant("data_pb_record").on("change", newValue => {
+    nodecg.Replicant("pb_recordData").on("change", newValue => {
         if (newValue == undefined) {
             return;
         }
@@ -106,93 +58,57 @@ window.onload = function () {
         // 自己記録更新書き換え
         recordPbTopics.innerHTML = '<img class="recordTopicsTitle el" src="material/recordNews_title_pb.png">';
         for(let i in pbRecordData) {
-            recordPbTopics.innerHTML += '<div id="pbRecordText' + i + '" class="recordTopicsBox el">'
-            + '<span class="left">' + pbRecordData[i].game_title + '</span><span class="right">' + pbRecordData[i].runner_name + '</span><br>'
-            + '<span class="left">' + pbRecordData[i].category + '</span><span class="right">' + pbRecordData[i].time + '</span>'
-            + '</div>';
+            recordPbTopics.innerHTML += `<div id="pbRecordText${i}" class="recordTopicsBox el">
+            <span class="left">${pbRecordData[i].game_title}</span><span class="right">${pbRecordData[i].runner_name}</span><br>
+            <span class="left">${pbRecordData[i].category}</span><span class="right">${pbRecordData[i].time}</span>
+            </div>`;
         }
     
         // 自己記録更新ピックアップ書き換え
         for(let i in pbRecordData) {
             if (pbRecordData[i].date != "") {
-                recordPbDetail.innerHTML = '<div class="recordTitleBox">'
-                + '<span class="left">' + pbRecordData[i].game_title + '</span><span class="right">' + pbRecordData[i].category + '</span>'
-                + '</div>'
-                + '<div class="recordDetailBox">'
-                + '<span class="left">' + pbRecordData[i].date + '</span><span class="right">' + pbRecordData[i].time + '</span><br>'
-                + '<span class="left">' + pbRecordData[i].runner_name + ' さん</span><br><br>'
-                + '<span id="pbDescriptionText"></span>'
-                + '</div>';
+                recordPbDetail.innerHTML = `<div class="recordTitleBox">
+                <span class="left">${pbRecordData[i].game_title}</span><span class="right">${pbRecordData[i].category}</span>
+                </div>
+                <div class="recordDetailBox">
+                <span class="left">${pbRecordData[i].date}</span><span class="right">${pbRecordData[i].time}</span><br>
+                <span class="left">${pbRecordData[i].runner_name}さん</span><br><br>
+                <span id="pbDescriptionText"></span>
+                </div>`;
                 document.getElementById('pbDescriptionText').innerText = pbRecordData[i].description;
             }
         }
-
-        recordTopicsPbAnimation = anime({
-            targets: '#recordPbTopics .el',
-            translateX: 1300,
-            easing: recordAnimationEasing,
-            duration: 1000,
-            delay: anime.stagger(100, {start: 1500})
-        });
-        
-        recordTopicsPbAnimationRev = anime({
-            targets: '#recordPbTopics .el',
-            translateX: 1300,
-            easing: recordAnimationEasingRev,
-            duration: 1000,
-            delay: anime.stagger(100),
-            direction: 'reverse',
-            endDelay: 1000
-        });
-        
-        recordDetailPbAnimation = anime({
-            targets: '#recordPbDetail',
-            translateX: 1300,
-            easing: recordAnimationEasing,
-            duration: 1000,
-            delay: 2500
-        });
-    
-        recordDetailPbAnimationRev = anime({
-            targets: '#recordPbDetail',
-            translateX: 1300,
-            easing: recordAnimationEasingRev,
-            direction: 'reverse',
-            duration: 1000
-        });
-    });
-
-    // アニメーションの指定
-    recordTitleAnimation = anime({
-        targets: '#recordTitle',
-        translateX: 1100,
-        easing: recordAnimationEasing,
-        duration: 1000,
-        delay: 1500
-    });
-    
-    recordTitleAnimationRev = anime({
-        targets: '#recordTitle',
-        translateX: 1100,
-        easing: recordAnimationEasingRev,
-        direction: 'reverse',
-        duration: 1000
     });
 }
 
 function showTitle() {
-    recordTitle.style.visibility = "visible";
-    recordTitleAnimation.restart();
+    anime({
+        targets: '#recordTitle',
+        translateX: ANIMATION.TRANSLATE_NORMAL,
+        easing: ANIMATION.EASING_NORMAL,
+        duration: ANIMATION.DURATION_TIME
+    });
 }
 
 function showTopicsTop() {
     for(let i in topRecordData) {
         document.getElementById('topRecordText' + i).style.backgroundColor = "black";
     }
-    recordTitleAnimationRev.restart();
-    recordTopTopics.style.visibility = "visible";
-    recordTopicsTopAnimation.restart();
-
+    anime({
+        targets: '#recordTitle',
+        translateX: ANIMATION.TRANSLATE_REVERSE,
+        easing: ANIMATION.EASING_REVERSE,
+        duration: ANIMATION.DURATION_TIME,
+        complete: () => {
+            anime({
+                targets: '#recordTopTopics .el',
+                translateX: ANIMATION.TRANSLATE_NORMAL,
+                easing: ANIMATION.EASING_NORMAL,
+                duration: ANIMATION.DURATION_TIME,
+                delay: anime.stagger(100)
+            });
+        }
+    });
 }
 
 function showDetailTop() {
@@ -201,18 +117,44 @@ function showDetailTop() {
             document.getElementById('topRecordText' + i).style.backgroundColor = "blue";
         }
     }
-    recordTopicsTopAnimationRev.restart();
-    recordTopDetail.style.visibility = "visible";
-    recordDetailTopAnimation.restart();
+    console.log("showDetailTop1");
+    anime({
+        targets: '#recordTopTopics .el',
+        translateX: ANIMATION.TRANSLATE_REVERSE,
+        easing: ANIMATION.EASING_REVERSE,
+        duration: ANIMATION.DURATION_TIME,
+        delay: anime.stagger(100, {start: ANIMATION.DELAY_TIME}),
+        complete: () => {
+            console.log("showDetailTop2");
+            anime({
+                targets: '#recordTopDetail',
+                translateX: ANIMATION.TRANSLATE_NORMAL,
+                easing: ANIMATION.EASING_NORMAL,
+                duration: ANIMATION.DURATION_TIME
+            });
+        }
+    });
 }
 
 function showTopicsPb() {
     for(let i in pbRecordData) {
         document.getElementById('pbRecordText' + i).style.backgroundColor = "black";
     }
-    recordDetailTopAnimationRev.restart();
-    recordPbTopics.style.visibility = "visible";
-    recordTopicsPbAnimation.restart();
+    anime({
+        targets: '#recordTopDetail',
+        translateX: ANIMATION.TRANSLATE_REVERSE,
+        easing: ANIMATION.EASING_REVERSE,
+        duration: ANIMATION.DURATION_TIME,
+        complete: () => {
+            anime({
+                targets: '#recordPbTopics .el',
+                translateX: ANIMATION.TRANSLATE_NORMAL,
+                easing: ANIMATION.EASING_NORMAL,
+                duration: ANIMATION.DURATION_TIME,
+                delay: anime.stagger(100)
+            });
+        }
+    });
 }
 
 function showDetailPb() {
@@ -221,19 +163,43 @@ function showDetailPb() {
             document.getElementById('pbRecordText' + i).style.backgroundColor = "blue";
         }
     }
-    recordTopicsPbAnimationRev.restart();
-    recordPbDetail.style.visibility = "visible";
-    recordDetailPbAnimation.restart();
+    anime({
+        targets: '#recordPbTopics .el',
+        translateX: ANIMATION.TRANSLATE_REVERSE,
+        easing: ANIMATION.EASING_REVERSE,
+        duration: ANIMATION.DURATION_TIME,
+        delay: anime.stagger(100, {start: ANIMATION.DELAY_TIME}),
+        complete: () => {
+            anime({
+                targets: '#recordPbDetail',
+                translateX: ANIMATION.TRANSLATE_NORMAL,
+                easing: ANIMATION.EASING_NORMAL,
+                duration: ANIMATION.DURATION_TIME
+            });
+        }
+    });
 }
 
 function showEnd() {
-    recordDetailPbAnimationRev.restart();
-    recordTitleAnimation.restart();
+    anime({
+        targets: '#recordPbDetail',
+        translateX: ANIMATION.TRANSLATE_REVERSE,
+        easing: ANIMATION.EASING_REVERSE,
+        duration: ANIMATION.DURATION_TIME,
+        complete: () => {
+            anime({
+                targets: '#recordTitle',
+                translateX: ANIMATION.TRANSLATE_NORMAL,
+                easing: ANIMATION.EASING_NORMAL,
+                duration: ANIMATION.DURATION_TIME
+            });
+        }
+    });
 }
 
-nodecg.listenFor('title_record_news', showTitle);
-nodecg.listenFor('topics_top_record_news', showTopicsTop);
-nodecg.listenFor('detail_top_record_news', showDetailTop);
-nodecg.listenFor('topics_pb_record_news', showTopicsPb);
-nodecg.listenFor('detail_pb_record_news', showDetailPb);
-nodecg.listenFor('end_record_news', showEnd);
+nodecg.listenFor(`${CURRENT_FILE}Title`, showTitle);
+nodecg.listenFor(`${CURRENT_FILE}TopicsTop`, showTopicsTop);
+nodecg.listenFor(`${CURRENT_FILE}DetailTop`, showDetailTop);
+nodecg.listenFor(`${CURRENT_FILE}TopicsPb`, showTopicsPb);
+nodecg.listenFor(`${CURRENT_FILE}DetailPb`, showDetailPb);
+nodecg.listenFor(`${CURRENT_FILE}End`, showEnd);
