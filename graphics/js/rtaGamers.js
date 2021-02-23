@@ -1,16 +1,20 @@
 'use strict';
 
+// 現在のファイル名
+const CURRENT_FILE = 'rtaGamers';
+
 // アニメーション定義
-const EASING = {
-    NORMAL: 'easeOutBack',
-    REVERSE: 'easeInBack'
+const ANIMATION = {
+    EASING_NORMAL: 'easeOutBack',
+    EASING_REVERSE: 'easeInBack',
+    TRANSLATE_NORMAL: 1300,
+    TRANSLATE_REVERSE: -1300,
+    DURATION_TIME: 1000,
+    DELAY_TIME: 1500
 }
 
 // 使用する変数
 let rtaGamersData;
-
-// 現在のファイル名
-const CURRENT_FILE = 'rtaGamers';
 
 window.onload = function() {
     // Replicantの設定
@@ -77,13 +81,11 @@ window.onload = function() {
 }
 
 function showTitle() {
-    gamersTitle.style.visibility = 'visible';
     anime({
         targets: '#gamersTitle',
-        translateX: 1100,
-        easing: EASING.NORMAL,
-        duration: 1000,
-        delay: 1500
+        translateX: ANIMATION.TRANSLATE_NORMAL,
+        easing: ANIMATION.EASING_NORMAL,
+        duration: ANIMATION.DURATION_TIME
     });
 }
 
@@ -91,18 +93,17 @@ function showTopics() {
     for(let i in rtaGamersData) {
         document.getElementById(`topicText${i}`).style.backgroundColor = '#ffd000';
     }
-    gamersTopics.style.visibility = 'visible';
     anime({
         targets: '#gamersTitle',
-        translateX: -1100,
-        easing: EASING.REVERSE,
-        duration: 1000,
-        complete: function() {
+        translateX: ANIMATION.TRANSLATE_REVERSE,
+        easing: ANIMATION.EASING_REVERSE,
+        duration: ANIMATION.DURATION_TIME,
+        complete: () => {
             anime({
                 targets: '#gamersTopics .el',
-                translateX: 1300,
-                easing: EASING.NORMAL,
-                duration: 1000,
+                translateX: ANIMATION.TRANSLATE_NORMAL,
+                easing: ANIMATION.EASING_NORMAL,
+                duration: ANIMATION.DURATION_TIME,
                 delay: anime.stagger(100)
             });
         }
@@ -115,19 +116,18 @@ function showDetail() {
             document.getElementById(`topicText${i}`).style.backgroundColor = 'red';
         }
     }
-    gamersDetail.style.visibility = 'visible';
     anime({
         targets: '#gamersTopics .el',
-        translateX: -1300,
-        easing: EASING.REVERSE,
-        duration: 1000,
-        delay: anime.stagger(100, {start: 1500}),
-        complete: function() {
+        translateX: ANIMATION.TRANSLATE_REVERSE,
+        easing: ANIMATION.EASING_REVERSE,
+        duration: ANIMATION.DURATION_TIME,
+        delay: anime.stagger(100, {start: ANIMATION.DELAY_TIME}),
+        complete: () => {
             anime({
                 targets: '#gamersDetail',
-                translateX: 1300,
-                easing: EASING.NORMAL,
-                duration: 1000
+                translateX: ANIMATION.TRANSLATE_NORMAL,
+                easing: ANIMATION.EASING_NORMAL,
+                duration: ANIMATION.DURATION_TIME
             });
         }
     });
@@ -136,15 +136,15 @@ function showDetail() {
 function showEnd() {
     anime({
         targets: '#gamersDetail',
-        translateX: -1300,
-        easing: EASING.REVERSE,
-        duration: 1000,
-        complete: function() {
+        translateX: ANIMATION.TRANSLATE_REVERSE,
+        easing: ANIMATION.EASING_REVERSE,
+        duration: ANIMATION.DURATION_TIME,
+        complete: () => {
             anime({
                 targets: '#gamersTitle',
-                translateX: 1100,
-                easing: EASING.NORMAL,
-                duration: 1000
+                translateX: ANIMATION.TRANSLATE_NORMAL,
+                easing: ANIMATION.EASING_NORMAL,
+                duration: ANIMATION.DURATION_TIME
             });
         }
     });
