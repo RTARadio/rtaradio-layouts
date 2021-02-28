@@ -1,90 +1,97 @@
-#eventTitle {
+#eventInfoTitle {
     position: absolute;
-    top: 300px;
-    left: -1000px;
+    top: 467px;
+    left: -1400px;
+}
+
+#eventInfoNew {
+    position: absolute;
+    top: 0px;
+    left: -1400px;
+}
+
+#eventInfoPickup {
+    position: absolute;
+    top: 0px;
+    left: -1400px;
+}
+
+#eventInfoDetail {
+    position: absolute;
+    top: 0px;
+    left: -1400px;
+}
+
+#eventInfoFuture {
+    position: absolute;
+    top: 0px;
+    left: -1400px;
+}
+
+.eventTitle {
+    width: calc(1200px - 10%);
+    height: 115px;
+    padding-top: 10px;
     text-align: center;
-    visibility: hidden;
-    color: white;
-}
-
-#eventList {
-    position: absolute;
-    top: 0px;
-    left: -1300px;
-    visibility: hidden;
-}
-
-#eventTopics {
-    position: absolute;
-    top: 0px;
-    left: -1300px;
-    visibility: hidden;
+    font-size: 64px;
+    font-style: italic;
 }
 
 .eventTopicsTitle {
-    font-size: 128px;
-    color: white;
+    width: calc(1200px - 10%);
+    margin-top: 20px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 64px;
 }
 
 .eventTopicsBox {
-    width: 1200px;
+    width: calc(1200px - 10%);
     height: 100px;
-    margin: 20px;
     margin-top: 50px;
     margin-bottom: 50px;
     padding: 20px;
-    border: 10px solid skyblue;
-    background-color: blue;
-    color: white;
     font-size: 36px;
 }
 
-#eventDetail0 {
-    position: absolute;
-    top: 0px;
-    left: -1300px;
-    visibility: hidden;
-}
-
-#eventDetail1 {
-    position: absolute;
-    top: 0px;
-    left: -1300px;
-    visibility: hidden;
-}
-
-#eventDetail2 {
-    position: absolute;
-    top: 0px;
-    left: -1300px;
-    visibility: hidden;
-}
-
-#eventDetail3 {
-    position: absolute;
-    top: 0px;
-    left: -1300px;
-    visibility: hidden;
-}
-
 .eventTitleBox {
-    width: 1200px;
+    width: calc(1200px - 10%);
     height: 100px;
     margin: 20px;
     padding: 20px;
-    border: 10px solid skyblue;
-    background-color: blue;
-    color: white;
     font-size: 36px;
 }
 
 .eventDetailBox {
-    width: 1200px;
+    width: calc(1200px - 10%);
     height: 770px;
     margin: 20px;
     padding: 20px;
-    border: 10px solid skyblue;
-    background-color: blue;
+    font-size: 48px;
+}
+
+.blueBoxProperty {
+    padding-left: 10%;
+    padding-right: 10%;
+    border-top: 10px solid;
+    border-bottom: 10px solid;
+    border-image: linear-gradient(90deg, #FFFFFF00 0%,  #52bfeb 30%, #afd7e7 70%, #FFFFFF00 100%);
+    border-image-slice: 1;
+    background: linear-gradient(to right, #FFFFFF00 0%,  #1a1a6d 5%, #1a1a6d 95%, #FFFFFF00 100%);
     color: white;
+}
+
+.skyblueBoxProperty {
+    padding-left: 10%;
+    padding-right: 10%;
+    border-top: 10px solid;
+    border-bottom: 10px solid;
+    border-image: linear-gradient(90deg, #FFFFFF00 0%,  #52bfeb 30%, #afd7e7 70%, #FFFFFF00 100%);
+    border-image-slice: 1;
+    background: linear-gradient(to right, #FFFFFF00 0%,  #4683b4 5%, #4683b4 95%, #FFFFFF00 100%);
+    color: white;
+}
+
+.font48 {
     font-size: 48px;
 }

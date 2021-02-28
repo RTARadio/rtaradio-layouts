@@ -1,75 +1,130 @@
 'use strict';
 
-let currentFile = 'event_info';
-const eventPickup = 'event_pickup';
-const eventFuture = 'event_future';
-const detailButton = {};
-const closeButton = {};
+const CURRENT_FILE = 'eventInfo';
+const EVENT_NEW = 'eventNew';
+const EVENT_PICKUP = 'eventPickup';
+const EVENT_FUTURE = 'eventFuture';
+
+let eventInfoNewData;
+let eventInfoPickupData;
+let eventInfoFutureData;
+
+let currentPageNew = 1;
+let currentPagePickup = 1;
+let currentPageFuture = 1;
+
+let currentPickup = 0;
 
 window.onload = function () {
-    nodecg.Replicant(`${eventPickup}Data`).on('change', newValue => {
+    nodecg.Replicant(`${EVENT_NEW}Data`).on('change', newValue => {
         if (newValue == undefined) {
             return;
         }
-        for (let i in newValue) {
-            document.getElementById(`eventPickupTitleText${i}`).innerText = newValue[i].title;
-            document.getElementById(`eventPickupDateText${i}`).innerText = newValue[i].date;
-            document.getElementById(`eventPickupDetailText${i}`).innerText = newValue[i].detail;
+        eventInfoNewData = newValue;
+        eventInfoNew.innerHTML = ''
+        for(let i in eventInfoNewData) {
+            eventInfoNew.innerHTML += `
+            <div>
+            <hr class="border">
+            <span>タイトル: ${eventInfoNewData[i].title}</span><br>
+            <span>日付: ${eventInfoNewData[i].date}</span><br>
+            </div>`;
         }
     });
 
-    nodecg.Replicant(`${eventFuture}Data`).on('change', newValue => {
+    nodecg.Replicant(`${EVENT_PICKUP}Data`).on('change', newValue => {
         if (newValue == undefined) {
             return;
         }
-        for (let i in newValue) {
-            document.getElementById(`eventFutureTitleText${i}`).innerText = newValue[i].title;
-            document.getElementById(`eventFutureDateText${i}`).innerText = newValue[i].date;
+        eventInfoPickupData = newValue;
+        eventInfoPickup.innerHTML = ''
+        for(let i in eventInfoPickupData) {
+            eventInfoPickup.innerHTML += `
+            <div>
+            <hr class="border">
+            <span>タイトル: ${eventInfoPickupData[i].title}</span><br>
+            <span>日付: ${eventInfoPickupData[i].date}</span><br>
+            <span>詳細: </span><span id="detailText${i}"></span><br>
+            </div>`;
+            document.getElementById(`detailText${i}`).innerText = eventInfoPickupData[i].detail;
+        }
+    });
+
+    nodecg.Replicant(`${EVENT_FUTURE}Data`).on('change', newValue => {
+        if (newValue == undefined) {
+            return;
+        }
+        eventInfoFutureData = newValue;
+        eventInfoFuture.innerHTML = ''
+        for(let i in eventInfoFutureData) {
+            eventInfoFuture.innerHTML += `
+            <div>
+            <hr class="border">
+            <span>タイトル: ${eventInfoFutureData[i].title}</span><br>
+            <span>日付: ${eventInfoFutureData[i].date}</span><br>
+            </div>`;
         }
     });
 }
 
 function reload() {
-    nodecg.sendMessage(`${eventPickup}Reload`);
-    nodecg.sendMessage(`${eventFuture}Reload`);
+    nodecg.sendMessage(`${EVENT_NEW}Reload`);
+    nodecg.sendMessage(`${EVENT_PICKUP}Reload`);
+    nodecg.sendMessage(`${EVENT_FUTURE}Reload`);
 }
 
 function showTitle() {
     titleButton.disabled = true;
-    listButton.disabled = false;
-    nodecg.sendMessage('title_' + currentFile);
+    newButton.disabled = false;
+    nodecg.sendMessage(`${CURRENT_FILE}Title`);
 }
 
-function showList() {
-    listButton.disabled = true;
-    topicsButton.disabled = false;
-    nodecg.sendMessage('list_' + currentFile);
-}
-
-function showTopics() {
-    topicsButton.disabled = true;
-    detail0Button.disabled = false;
-    nodecg.sendMessage('topics_' + currentFile);
-}
-
-function showDetail(num) {
-    document.getElementById(`detail${num}Button`).disabled = true;
-    document.getElementById(`close${num}Button`).disabled = false;
-    nodecg.sendMessage('detail_' + currentFile, num);
-}
-
-function closeDetail(num) {
-    document.getElementById(`close${num}Button`).disabled = true;
-    if (num + 1 < 4) {
-        document.getElementById(`detail${num + 1}Button`).disabled = false;   
+function showNew() {
+    let maxPage = Math.floor(eventInfoNewData.length / 4) + 1
+    nodecg.sendMessage(`${CURRENT_FILE}New`, currentPageNew);
+    if (currentPageNew == maxPage) {
+        newButton.disabled = true;
+        pickupButton.disabled = false;
     } else {
-        endButton.disabled = false;
+        currentPageNew += 1;
     }
-    nodecg.sendMessage('close_' + currentFile, num);
+}
+
+function showPickup() {
+    nodecg.sendMessage(`${CURRENT_FILE}Pickup`, currentPagePickup);
+    pickupButton.disabled = true;
+    detailButton.disabled = false;
+}
+
+function showDetail() {
+    let maxPickup = eventInfoPickupData.length - 1;
+    nodecg.sendMessage(`${CURRENT_FILE}Detail`, currentPickup);
+    if (currentPickup == maxPickup) {
+        detailButton.disabled = true;
+        futureButton.disabled = false;
+    } else {
+        detailButton.disabled = true;
+        pickupButton.disabled = false;
+        currentPickup += 1;
+        if (currentPickup % 4 == 0) {
+            currentPagePickup += 1;
+        }
+    }
+}
+
+function showFuture() {
+    let maxPage = Math.floor(eventInfoFutureData.length / 4) + 1
+    nodecg.sendMessage(`${CURRENT_FILE}Future`, currentPageFuture);
+    if (currentPageFuture == maxPage) {
+        futureButton.disabled = true;
+        endButton.disabled = false;
+    } else {
+        currentPageFuture += 1;
+    }
 }
 
 function showEnd() {
     endButton.disabled = true;
     titleButton.disabled = false;
-    nodecg.sendMessage('end_' + currentFile);
+    nodecg.sendMessage(`${CURRENT_FILE}End`);
 }

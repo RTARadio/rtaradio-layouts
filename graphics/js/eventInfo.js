@@ -1,192 +1,233 @@
 'use strict';
 
-let eventTitle;
-let eventList;
-let eventTopics;
-const eventDetail = {};
+// 現在のファイル名
+const CURRENT_FILE = 'eventInfo';
+const EVENT_NEW = 'eventNew';
+const EVENT_PICKUP = 'eventPickup';
+const EVENT_FUTURE = 'eventFuture';
 
-// アニメーション初期化
-let eventTitleAnimation;
-let eventTitleAnimationRev;
-let eventListAnimation;
-let eventListAnimationRev;
-let eventTopicsAnimation;
-let eventTopicsAnimationRev;
-const eventDetailAnimation = {};
-const eventDetailAnimationRev = {};
-let eventAnimationEasing = 'easeOutBack';
-let eventAnimationEasingRev = 'easeOutBack';
+// アニメーション定義
+const ANIMATION = {
+    EASING_NORMAL: 'easeOutBack',
+    EASING_REVERSE: 'easeInBack',
+    TRANSLATE_NORMAL: 1400,
+    TRANSLATE_REVERSE: -1400,
+    DURATION_TIME: 500,
+    DELAY_TIME: 1000
+}
 
 // 使用する変数
+let eventNewData;
 let eventPickupData;
 let eventFutureData;
 
-window.onload = function () {
-    eventTitle = document.getElementById("eventTitle");
-    eventList = document.getElementById("eventList");
-    eventTopics = document.getElementById("eventTopics");
-    eventDetail[0] = document.getElementById("eventDetail0");
-    eventDetail[1] = document.getElementById("eventDetail1");
-    eventDetail[2] = document.getElementById("eventDetail2");
-    eventDetail[3] = document.getElementById("eventDetail3");
+let eventPickupShowFirst = false;
 
+window.onload = function () {
     // Replicantの設定
-    nodecg.Replicant("data_event_pickup").on("change", newValue => {
+    nodecg.Replicant(`${EVENT_NEW}Data`).on("change", newValue => {
+        if (newValue == undefined) {
+            return;
+        }
+        eventNewData = newValue;
+    });
+
+    nodecg.Replicant(`${EVENT_PICKUP}Data`).on("change", newValue => {
         if (newValue == undefined) {
             return;
         }
         eventPickupData = newValue;
-        // ピックアップイベント一覧書き換え
-        eventTopics.innerHTML = '<div class="eventTopicsTitle el">開催予定のイベント</div>';
-        for(let i in eventPickupData) {
-            eventTopics.innerHTML += '<div id="eventPickupText' + i + '" class="eventTopicsBox el">'
-            + '<span class="left">' + eventPickupData[i].date + '</span><br>'
-            + '<span class="center">' + eventPickupData[i].title + '</span>'
-            + '</div>';
-        }
-        // 各ピックアップ書き換え
-        for(let i in eventPickupData) {
-            eventDetail[i].innerHTML = '<div class="eventTitleBox">'
-            + '<span class="left">' + eventPickupData[i].title + '</span><br>'
-            + '<span class="right">' + eventPickupData[i].date + '</span>'
-            + '</div>'
-            + '<div class="eventDetailBox">'
-            + '<span id="eventDescriptionText' + i + '"></span>'
-            + '</div>';
-            document.getElementById('eventDescriptionText' + i).innerText = eventPickupData[i].detail;
-            eventDetailAnimation[i] = anime({
-                targets: '#eventDetail' + i,
-                translateX: 1300,
-                easing: eventAnimationEasing,
-                duration: 500,
-                delay: 1200
-            });
-            eventDetailAnimationRev[i] = anime({
-                targets: '#eventDetail' + i,
-                translateX: 1300,
-                easing: eventAnimationEasingRev,
-                direction: 'reverse',
-                duration: 500
-            });
-        }
-
-        eventTopicsAnimation = anime({
-            targets: '#eventTopics .el',
-            translateX: 1300,
-            easing: eventAnimationEasing,
-            duration: 500,
-            delay: anime.stagger(100, {start: 750})
-        });
-    
-        eventTopicsAnimationRev = anime({
-            targets: '#eventTopics .el',
-            translateX: 1300,
-            easing: eventAnimationEasingRev,
-            duration: 500,
-            delay: anime.stagger(100),
-            direction: 'reverse',
-            endDelay: 500
-        });
     });
     
-    nodecg.Replicant("data_event_future").on("change", newValue => {
+    nodecg.Replicant(`${EVENT_FUTURE}Data`).on("change", newValue => {
         if (newValue == undefined) {
             return;
         }
         eventFutureData = newValue;
-        // 告知されたイベント一覧書き換え
-        eventList.innerHTML = '<div class="eventTopicsTitle el">告知されたイベント</div>';
-        for(let i in eventFutureData) {
-            eventList.innerHTML += '<div id="eventListText' + i + '" class="eventTopicsBox el">'
-            + '<span class="left">' + eventFutureData[i].date + '</span><br>'
-            + '<span class="center">' + eventFutureData[i].title + '</span>'
-            + '</div>';
-        }
-
-        eventListAnimation = anime({
-            targets: '#eventList .el',
-            translateX: 1300,
-            easing: eventAnimationEasing,
-            duration: 500,
-            delay: anime.stagger(100, {start: 750})
-        });
-    
-        eventListAnimationRev = anime({
-            targets: '#eventList .el',
-            translateX: 1300,
-            easing: eventAnimationEasingRev,
-            duration: 500,
-            delay: anime.stagger(100),
-            direction: 'reverse'
-        });
-    });
-
-    // タイトル書き換え
-    eventTitle.innerHTML = '<span class="titleHeader">RTA</span><br>'
-    + '<span class="titleBody">イベント</span><br>'
-    + '<span class="titleFooter">インフォメーション</span>'; 
-
-    // アニメーションの指定
-    eventTitleAnimation = anime({
-        targets: '#eventTitle',
-        translateX: 1100,
-        easing: eventAnimationEasing,
-        duration: 500,
-        delay: 1200
-    });
-
-    eventTitleAnimationRev = anime({
-        targets: '#eventTitle',
-        translateX: 1100,
-        easing: eventAnimationEasingRev,
-        direction: 'reverse',
-        duration: 500
     });
 }
 
 function showTitle() {
-    eventTitle.style.visibility = "visible";
-    eventTitleAnimation.restart();
+    anime({
+        targets: '#eventInfoTitle',
+        translateX: ANIMATION.TRANSLATE_NORMAL,
+        easing: ANIMATION.EASING_NORMAL,
+        duration: ANIMATION.DURATION_TIME,
+    });
 }
 
-function showList() {
-    eventTitleAnimationRev.restart();
-    eventList.style.visibility = "visible";
-    eventListAnimation.restart();
-
-}
-
-function showTopics() {
-    for(let i in eventPickupData) {
-        document.getElementById('eventPickupText' + i).style.backgroundColor = "blue";
+function showNew(page) {
+    let close_targets = '#eventInfoNew .el'
+    if (page == 1) {
+        close_targets = '#eventInfoTitle'
     }
-    eventListAnimationRev.restart();
-    eventTopics.style.visibility = "visible";
-    eventTopicsAnimation.restart();
+    anime({
+        targets: close_targets,
+        translateX: ANIMATION.TRANSLATE_REVERSE,
+        easing: ANIMATION.EASING_REVERSE,
+        duration: ANIMATION.DURATION_TIME,
+        delay: anime.stagger(100),
+        complete: () => {
+            eventInfoNew.innerHTML = `
+            <div class="eventTopicsTitle skyblueBoxProperty el">
+                <span>新着のイベント </span>
+                <span class="font48">${page}/${Math.floor(eventNewData.length / 4) + 1}</span>
+            </div>`;
+            let calcPage = (page - 1) * 4;
+            for(let i in eventNewData) {
+                if (calcPage <= i && i <= calcPage + 3) {
+                    eventInfoNew.innerHTML += `
+                    <div class="eventTopicsBox blueBoxProperty el">
+                        <span class="left">${eventNewData[i].date}</span>
+                        <br>
+                        <span class="center">${eventNewData[i].title}</span>
+                    </div>`;
+                }
+            }
+            anime({
+                targets: '#eventInfoNew .el',
+                translateX: ANIMATION.TRANSLATE_NORMAL,
+                easing: ANIMATION.EASING_NORMAL,
+                duration: ANIMATION.DURATION_TIME,
+                delay: anime.stagger(100)
+            });
+        }
+    });
 }
 
-function showDetail(num) {
-    document.getElementById('eventPickupText' + num).style.backgroundColor = "steelblue";
-    eventTopicsAnimationRev.restart();
-    eventDetail[num].style.visibility = "visible";
-    eventDetailAnimation[num].restart();
+function showPickup(page) {
+    let close_targets = '#eventInfoDetail';
+    if (!eventPickupShowFirst) {
+        close_targets = '#eventInfoNew .el';
+        eventPickupShowFirst = true;
+    }
+    anime({
+        targets: close_targets,
+        translateX: ANIMATION.TRANSLATE_REVERSE,
+        easing: ANIMATION.EASING_REVERSE,
+        duration: ANIMATION.DURATION_TIME,
+        delay: anime.stagger(100),
+        complete: () => {
+            eventInfoPickup.innerHTML = `
+            <div class="eventTopicsTitle skyblueBoxProperty el">
+                <span>直近開催のイベント </span>
+                <span class="font48">${page}/${Math.floor(eventPickupData.length / 4) + 1}</span>
+            </div>`;
+            let calcPage = (page - 1) * 4;
+            for(let i in eventPickupData) {
+                if (calcPage <= i && i <= calcPage + 3) {
+                    eventInfoPickup.innerHTML += `
+                    <div id="eventPickupText${i}" class="eventTopicsBox blueBoxProperty el">
+                        <span class="left">${eventPickupData[i].date}</span>
+                        <br>
+                        <span class="center">${eventPickupData[i].title}</span>
+                    </div>`;
+                }
+            }
+            anime({
+                targets: '#eventInfoPickup .el',
+                translateX: ANIMATION.TRANSLATE_NORMAL,
+                easing: ANIMATION.EASING_NORMAL,
+                duration: ANIMATION.DURATION_TIME,
+                delay: anime.stagger(100)
+            });
+        }
+    });
 }
 
-function closeDetail(num) {
-    document.getElementById('eventPickupText' + num).style.backgroundColor = "blue";
-    eventDetailAnimationRev[num].restart();
-    eventDetail[num].style.visibility = "visible";
-    eventTopicsAnimation.restart();
+function showDetail(pickup) {
+    document.getElementById(`eventPickupText${pickup}`).style.background = "linear-gradient(to right, #FFFFFF00 0%,  #4683b4 10%, #4683b4 90%, #FFFFFF00 100%)";
+    anime({
+        targets: '#eventInfoPickup .el',
+        translateX: ANIMATION.TRANSLATE_REVERSE,
+        easing: ANIMATION.EASING_REVERSE,
+        duration: ANIMATION.DURATION_TIME,
+        delay: anime.stagger(100, {start: ANIMATION.DELAY_TIME}),
+        complete: () => {
+            for(let i in eventPickupData) {
+                if (i == pickup) {
+                    eventInfoDetail.innerHTML = `
+                    <div class="eventTitleBox blueBoxProperty">
+                        <span class="left">${eventPickupData[i].title}</span>
+                        <br>
+                        <span class="right">${eventPickupData[i].date}</span>
+                    </div>
+                    <div class="eventDetailBox blueBoxProperty">
+                        <span id="eventDescriptionText"></span>
+                    </div>`;
+                    document.getElementById('eventDescriptionText').innerText = eventPickupData[i].detail;
+                }
+            }
+            anime({
+                targets: `#eventInfoDetail`,
+                translateX: ANIMATION.TRANSLATE_NORMAL,
+                easing: ANIMATION.EASING_NORMAL,
+                duration: ANIMATION.DURATION_TIME
+            });
+        }
+    });
+}
+
+function showFuture(page) {
+    let close_targets = '#eventInfoFuture .el'
+    if (page == 1) {
+        close_targets = '#eventInfoDetail'
+    }
+    anime({
+        targets: close_targets,
+        translateX: ANIMATION.TRANSLATE_REVERSE,
+        easing: ANIMATION.EASING_REVERSE,
+        duration: ANIMATION.DURATION_TIME,
+        delay: anime.stagger(100),
+        complete: () => {
+            eventInfoFuture.innerHTML = `
+            <div class="eventTopicsTitle skyblueBoxProperty el">
+                <span>今後のイベント </span>
+                <span class="font48">${page}/${Math.floor(eventFutureData.length / 4) + 1}</span>
+            </div>`;
+            let calcPage = (page - 1) * 4;
+            for(let i in eventFutureData) {
+                if (calcPage <= i && i <= calcPage + 3) {
+                    eventInfoFuture.innerHTML += `
+                    <div class="eventTopicsBox blueBoxProperty el">
+                        <span class="left">${eventFutureData[i].date}</span>
+                        <br>
+                        <span class="center">${eventFutureData[i].title}</span>
+                    </div>`;
+                }
+            }
+            anime({
+                targets: '#eventInfoFuture .el',
+                translateX: ANIMATION.TRANSLATE_NORMAL,
+                easing: ANIMATION.EASING_NORMAL,
+                duration: ANIMATION.DURATION_TIME,
+                delay: anime.stagger(100)
+            });
+        }
+    });
 }
 
 function showEnd() {
-    eventTopicsAnimationRev.restart();
-    eventTitleAnimation.restart();
+    anime({
+        targets: '#eventInfoFuture .el',
+        translateX: ANIMATION.TRANSLATE_REVERSE,
+        easing: ANIMATION.EASING_REVERSE,
+        duration: ANIMATION.DURATION_TIME,
+        delay: anime.stagger(100),
+        complete: () => {
+            anime({
+                targets: '#eventInfoTitle',
+                translateX: ANIMATION.TRANSLATE_NORMAL,
+                easing: ANIMATION.EASING_NORMAL,
+                duration: ANIMATION.DURATION_TIME
+            });
+        }
+    });
 }
 
-nodecg.listenFor('title_event_info', showTitle);
-nodecg.listenFor('list_event_info', showList);
-nodecg.listenFor('topics_event_info', showTopics);
-nodecg.listenFor('detail_event_info', (newValue) => { showDetail(newValue) });
-nodecg.listenFor('close_event_info', (newValue) => { closeDetail(newValue) });
-nodecg.listenFor('end_event_info', showEnd);
+nodecg.listenFor(`${CURRENT_FILE}Title`, showTitle);
+nodecg.listenFor(`${CURRENT_FILE}New`, (newValue) => { showNew(newValue) });
+nodecg.listenFor(`${CURRENT_FILE}Pickup`, (newValue) => { showPickup(newValue) });
+nodecg.listenFor(`${CURRENT_FILE}Detail`, (newValue) => { showDetail(newValue) });
+nodecg.listenFor(`${CURRENT_FILE}Future`, (newValue) => { showFuture(newValue) });
+nodecg.listenFor(`${CURRENT_FILE}End`, showEnd);

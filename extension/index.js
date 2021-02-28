@@ -18,6 +18,7 @@ async function init() {
     require('./initialization/03_rtaGamers');
     require('./initialization/04_recordNewsPb');
     require('./initialization/04_recordNewsTop');
+    require('./initialization/05_eventInfoNew');
     require('./initialization/05_eventInfoFuture');
     require('./initialization/05_eventInfoPickup');
     require('./initialization/07_letter');
