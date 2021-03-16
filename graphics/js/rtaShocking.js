@@ -28,15 +28,16 @@ window.onload = function () {
         `;
 
         let htmlList = "";
-        if (parameterData[0].twitch_link != "") {
+
+        if (parameterData[0].twitter_link != "") {
             htmlList += `
-            <img class="iconImage" src="material/icon_twitch.png"><span>${parameterData[0].twitch_link}</span>
+            <img class="iconImage" src="material/icon_twitter.png"><span>${parameterData[0].twitter_link}</span>
             `;
         }
 
-        if (parameterData[0].niconico_link != "") {
+        if (parameterData[0].twitch_link != "") {
             htmlList += `
-            <img class="iconImage" src="material/icon_niconico.png"><span>${parameterData[0].niconico_link}</span>
+            <img class="iconImage" src="material/icon_twitch.png"><span>${parameterData[0].twitch_link}</span>
             `;
         }
 
@@ -50,9 +51,9 @@ window.onload = function () {
             `;
         }
 
-        if (parameterData[0].twitter_link != "") {
+        if (parameterData[0].niconico_link != "") {
             htmlList += `
-            <img class="iconImage" src="material/icon_twitter.png"><span>${parameterData[0].twitter_link}</span>
+            <img class="iconImage" src="material/icon_niconico.png"><span>${parameterData[0].niconico_link}</span>
             `;
         }
 
