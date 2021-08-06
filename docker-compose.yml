@@ -2,16 +2,19 @@ version: '3'
 
 services:
   nodecg:
-    image: gunimus/rtaradio-layouts
+    image: ${LAYOUTS_NAME}
     build: 
       context: .
+      args:
+        - LAYOUTS_NAME=${LAYOUTS_NAME}
+    restart: always
     volumes:
-      - ./dashboard:/app/nodecg/bundles/rtaradio_layouts/dashboard
-      - ./extension:/app/nodecg/bundles/rtaradio_layouts/extension
-      - ./graphics:/app/nodecg/bundles/rtaradio_layouts/graphics
+      - ./dashboard:/app/nodecg/bundles/${LAYOUTS_NAME}/dashboard
+      - ./extension:/app/nodecg/bundles/${LAYOUTS_NAME}/extension
+      - ./graphics:/app/nodecg/bundles/${LAYOUTS_NAME}/graphics
       - ./cfg:/app/nodecg/cfg
       - ./nodecg/db:/app/nodecg/db
       - ./nodecg/logs:/app/nodecg/logs
       - ./nodecg/assets:/app/nodecg/assets
     ports: 
-      - 9090:9090
+      - ${ACCESS_PORT}:9090

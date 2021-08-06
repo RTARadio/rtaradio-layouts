@@ -65,7 +65,7 @@ window.onload = function () {
     <span class="rtaRacingDescription">RTAのレース(並走)を専門とするTwitchチャンネル</span>
     `;
 
-    endingRtaRacingBG.innerHTML = `<img src="material/endingRtaRacing.png" width="1920px" height="1080px">`;
+    endingRtaRacingBG.innerHTML = `<img src="material/rtaRacing.png" width="1920px" height="1080px">`;
 
     endingRtaRacingLogo.innerHTML = `<img src="material/logo_rtaRacing.png" width="1080px" height="285px">`;
 
