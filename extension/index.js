@@ -21,6 +21,8 @@ async function init() {
     require('./initialization/05_eventInfoNew');
     require('./initialization/05_eventInfoFuture');
     require('./initialization/05_eventInfoPickup');
+    require('./initialization/06_rtaRacingFuture');
+    require('./initialization/06_rtaRacingPast');
     require('./initialization/07_letter');
     require('./initialization/08_twitter');
 }
